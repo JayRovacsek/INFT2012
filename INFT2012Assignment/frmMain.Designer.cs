@@ -30,12 +30,14 @@
         {
             this.lbxPlayerList = new System.Windows.Forms.ListBox();
             this.lblPlayerList = new System.Windows.Forms.Label();
+            this.lblTargetScore = new System.Windows.Forms.Label();
+            this.lbxScoreTarget = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lbxPlayerList
             // 
             this.lbxPlayerList.FormattingEnabled = true;
-            this.lbxPlayerList.Location = new System.Drawing.Point(474, 27);
+            this.lbxPlayerList.Location = new System.Drawing.Point(474, 23);
             this.lbxPlayerList.Name = "lbxPlayerList";
             this.lbxPlayerList.Size = new System.Drawing.Size(72, 30);
             this.lbxPlayerList.TabIndex = 1;
@@ -43,17 +45,36 @@
             // lblPlayerList
             // 
             this.lblPlayerList.AutoSize = true;
-            this.lblPlayerList.Location = new System.Drawing.Point(471, 11);
+            this.lblPlayerList.Location = new System.Drawing.Point(471, 7);
             this.lblPlayerList.Name = "lblPlayerList";
             this.lblPlayerList.Size = new System.Drawing.Size(75, 13);
             this.lblPlayerList.TabIndex = 2;
             this.lblPlayerList.Text = "List of Players:";
+            // 
+            // lblTargetScore
+            // 
+            this.lblTargetScore.AutoSize = true;
+            this.lblTargetScore.Location = new System.Drawing.Point(471, 56);
+            this.lblTargetScore.Name = "lblTargetScore";
+            this.lblTargetScore.Size = new System.Drawing.Size(72, 13);
+            this.lblTargetScore.TabIndex = 3;
+            this.lblTargetScore.Text = "Score Target:";
+            // 
+            // lbxScoreTarget
+            // 
+            this.lbxScoreTarget.FormattingEnabled = true;
+            this.lbxScoreTarget.Location = new System.Drawing.Point(474, 72);
+            this.lbxScoreTarget.Name = "lbxScoreTarget";
+            this.lbxScoreTarget.Size = new System.Drawing.Size(72, 17);
+            this.lbxScoreTarget.TabIndex = 4;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 357);
+            this.Controls.Add(this.lbxScoreTarget);
+            this.Controls.Add(this.lblTargetScore);
             this.Controls.Add(this.lblPlayerList);
             this.Controls.Add(this.lbxPlayerList);
             this.Name = "frmMain";
@@ -67,6 +88,8 @@
         #endregion
         private System.Windows.Forms.ListBox lbxPlayerList;
         private System.Windows.Forms.Label lblPlayerList;
+        private System.Windows.Forms.Label lblTargetScore;
+        private System.Windows.Forms.ListBox lbxScoreTarget;
     }
 }
 

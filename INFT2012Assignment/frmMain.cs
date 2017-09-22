@@ -22,27 +22,20 @@ namespace INFT2012Assignment
             frmWelcome WelcomeForm = new frmWelcome();
             WelcomeForm.ShowDialog();
             int numberOfPlayers = WelcomeForm.playerQuery;
-            int stubb = 20;
-            setupGame(numberOfPlayers, stubb);
+            setupGame(numberOfPlayers);
             createLabels(numberOfPlayers);
             determineTurnOrder(numberOfPlayers);
 
         }
 
-        private string playerName;
-
-        public string nameQuery
+        private void setupGame(int playerCount)
         {
-            get
-            {
-                return Convert.ToString(lbxPlayerList.Items);
-            }
+            frmScoreSet SetScoreForm = new frmScoreSet();
+            SetScoreForm.ShowDialog();
+            int scoreTarget = SetScoreForm.queryScoreTarget;
+            lbxScoreTarget.Items.Add(scoreTarget);
 
-        }
-
-        private void setupGame(int playerCount,int scoreTarget)
-        {
-            dataCheck(playerCount, scoreTarget);
+            dataCheck(playerCount);
             if (playerCount == 1)
             {
                 frmNameInput NameInput = new frmNameInput();

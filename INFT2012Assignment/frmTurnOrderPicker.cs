@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace INFT2012Assignment
 {
-    public partial class turnOrderPicker : Form
+    public partial class frmTurnOrderPicker : Form
     {
-        public turnOrderPicker()
+        public frmTurnOrderPicker()
         {
             InitializeComponent();
         }
@@ -34,6 +34,11 @@ namespace INFT2012Assignment
         private void btnPlayerOneFirst_Click(object sender, EventArgs e)
         {
             firstPlayer = "P1";
+        }
+
+        private void turnOrderPicker_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

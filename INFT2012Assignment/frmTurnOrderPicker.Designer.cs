@@ -1,6 +1,6 @@
 ﻿namespace INFT2012Assignment
 {
-    partial class turnOrderPicker
+    partial class frmTurnOrderPicker
     {
         /// <summary>
         /// Required designer variable.
@@ -83,6 +83,7 @@
             this.Controls.Add(this.lblInformation);
             this.Name = "turnOrderPicker";
             this.Text = "Turn Order:";
+            this.Load += new System.EventHandler(this.turnOrderPicker_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
