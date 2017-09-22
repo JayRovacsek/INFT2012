@@ -8,3 +8,6 @@ C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\
 C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.CoreCompileInputs.cache
 C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.exe
 C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.pdb
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmWelcome.resources
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmNameInput.resources
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.turnOrderPicker.resources

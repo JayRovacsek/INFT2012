@@ -51,6 +51,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNameInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNameInput.Designer.cs">
+      <DependentUpon>frmNameInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmWelcome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,8 +65,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="turnOrderPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="turnOrderPicker.Designer.cs">
+      <DependentUpon>turnOrderPicker.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNameInput.resx">
+      <DependentUpon>frmNameInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmWelcome.resx">
       <DependentUpon>frmWelcome.cs</DependentUpon>
@@ -74,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="turnOrderPicker.resx">
+      <DependentUpon>turnOrderPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
