@@ -1,0 +1,10 @@
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.exe.config
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.exe
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.pdb
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csprojResolveAssemblyReference.cache
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmMain.resources
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.Properties.Resources.resources
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.GenerateResource.Cache
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.CoreCompileInputs.cache
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.exe
+C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.pdb
