@@ -24,7 +24,7 @@ namespace INFT2012Assignment
             int numberOfPlayers = WelcomeForm.playerQuery;
             setupGame(numberOfPlayers);
             createLabels(numberOfPlayers);
-            determineTurnOrder(numberOfPlayers);
+            determineTurnOrder();
 
         }
 
@@ -66,13 +66,14 @@ namespace INFT2012Assignment
             }
             else if (playerCount == 2)
             {
-                this.Text = "Plus Moins Two Player Mode";
+                this.Text = "Plus Moins Two Player Mode, much less Evil Robot AI included";
             }
         }
 
-        private void determineTurnOrder(int playerCount)
+        private void determineTurnOrder()
         {
-
+            frmTurnOrderPicker TurnPicker = new frmTurnOrderPicker(lbxPlayerList);
+            TurnPicker.ShowDialog();
         }
 
         private void dataCheck(int data)

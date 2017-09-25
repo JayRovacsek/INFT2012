@@ -17,28 +17,46 @@ namespace INFT2012Assignment
             InitializeComponent();
         }
 
-        private string firstPlayer = "P1";
+        public frmTurnOrderPicker(ListBox lbxPlayerList)
+        {
+            this.lbxPlayerList = lbxPlayerList;
+        }
+
+        private ListBox lbxPlayerList;
 
         public string turnQuery
         {
             get
             {
-                return firstPlayer;
+                return Convert.ToString(lbxPlayerList.Items);
             }
             set
             {
-                firstPlayer = value;
+                if(lbxPlayerList.Items.Count == 2)
+                {
+                    MessageBox.Show("This will clear all players, are you sure you want to continue?", "Clear Players?");
+                    //FIX ME, ABSOLUTELY BROKEN
+                }
+                lbxPlayerList.Items.Clear();
+                lbxPlayerList.Items.Add(value);
             }
         }
 
         private void btnPlayerOneFirst_Click(object sender, EventArgs e)
         {
-            firstPlayer = "P1";
+            
+        }
+
+        private void btnPlayerTwoFirst_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void turnOrderPicker_Load(object sender, EventArgs e)
         {
-
+            btnPlayerOneFirst.Text = Convert.ToString(lbxPlayerList.Items.IndexOf(1)) + " will go first!";
+            btnPlayerTwoFirst.Text = Convert.ToString(lbxPlayerList.Items.IndexOf(1)) + " will go first!";
         }
+
     }
 }
