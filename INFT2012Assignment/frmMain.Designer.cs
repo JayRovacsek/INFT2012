@@ -32,6 +32,7 @@
             this.lblPlayerList = new System.Windows.Forms.Label();
             this.lblTargetScore = new System.Windows.Forms.Label();
             this.lbxScoreTarget = new System.Windows.Forms.ListBox();
+            this.btnGameStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbxPlayerList
@@ -68,11 +69,22 @@
             this.lbxScoreTarget.Size = new System.Drawing.Size(72, 17);
             this.lbxScoreTarget.TabIndex = 4;
             // 
+            // btnGameStart
+            // 
+            this.btnGameStart.Location = new System.Drawing.Point(213, 313);
+            this.btnGameStart.Name = "btnGameStart";
+            this.btnGameStart.Size = new System.Drawing.Size(101, 23);
+            this.btnGameStart.TabIndex = 5;
+            this.btnGameStart.Text = "Ready to Play!";
+            this.btnGameStart.UseVisualStyleBackColor = true;
+            this.btnGameStart.Click += new System.EventHandler(this.btnGameStart_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 357);
+            this.Controls.Add(this.btnGameStart);
             this.Controls.Add(this.lbxScoreTarget);
             this.Controls.Add(this.lblTargetScore);
             this.Controls.Add(this.lblPlayerList);
@@ -90,6 +102,7 @@
         private System.Windows.Forms.Label lblPlayerList;
         private System.Windows.Forms.Label lblTargetScore;
         private System.Windows.Forms.ListBox lbxScoreTarget;
+        private System.Windows.Forms.Button btnGameStart;
     }
 }
 
