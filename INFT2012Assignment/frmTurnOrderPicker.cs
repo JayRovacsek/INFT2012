@@ -40,5 +40,11 @@ namespace INFT2012Assignment
         {
 
         }
+
+        public void dicksLol(string bagOfDicks)
+        {
+            return;
+        }
+
     }
 }

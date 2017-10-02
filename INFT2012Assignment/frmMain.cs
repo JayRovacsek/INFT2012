@@ -72,7 +72,17 @@ namespace INFT2012Assignment
 
         private void determineTurnOrder(int playerCount)
         {
-
+            string dick = "";
+            frmTurnOrderPicker TurnPicker = new frmTurnOrderPicker();
+            foreach (var item in lbxPlayerList.Items)
+            {
+                dick += Convert.ToString(item) + ";";
+            }
+            lblPlayerList.Text = dick;
+                //STUB
+            
+            TurnPicker.dicksLol(dick);
+            //throw new NotImplementedException();
         }
 
         private void dataCheck(int data)

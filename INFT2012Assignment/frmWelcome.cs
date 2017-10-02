@@ -38,26 +38,12 @@ namespace INFT2012Assignment
 
         private void rbnSingle_CheckedChanged(object sender, EventArgs e)   //Check changes, which updates player number
         {
-            if (rbnSingle.Checked)
-            {
-                playerQuery = 1;
-            }
-            else
-            {
-                playerQuery = 2;
-            }
+            playerQuery = rbnTwo.Checked ? 1 : 2;
         }
 
         private void rbnTwo_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbnTwo.Checked)
-            {
-                playerQuery = 2;
-            }
-            else
-            {
-                playerQuery = 1;
-            }
+            playerQuery = rbnTwo.Checked ? 2 : 1;
         }
 
         private void frmWelcome_Load(object sender, EventArgs e)
