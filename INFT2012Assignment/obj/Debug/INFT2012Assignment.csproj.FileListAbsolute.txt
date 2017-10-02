@@ -12,3 +12,17 @@ C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\
 C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmNameInput.resources
 C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmScoreSet.resources
 C:\Users\Remote\source\repos\INFT2012Assignment\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmTurnOrderPicker.resources
+Z:\Git\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.exe.config
+Z:\Git\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.exe
+Z:\Git\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.pdb
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csprojResolveAssemblyReference.cache
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmMain.resources
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmNameInput.resources
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmScoreSet.resources
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmWelcome.resources
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.Properties.Resources.resources
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmTurnOrderPicker.resources
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.GenerateResource.Cache
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.CoreCompileInputs.cache
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.exe
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.pdb

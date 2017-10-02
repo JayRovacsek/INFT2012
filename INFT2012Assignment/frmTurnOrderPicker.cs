@@ -43,6 +43,7 @@ namespace INFT2012Assignment
 
         public void dicksLol(string bagOfDicks)
         {
+            MessageBox.Show("It works", ":)");
             return;
         }
 
