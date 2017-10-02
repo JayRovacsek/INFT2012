@@ -54,10 +54,12 @@
             // 
             // tbxName
             // 
+            this.tbxName.HideSelection = false;
             this.tbxName.Location = new System.Drawing.Point(15, 25);
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(189, 20);
             this.tbxName.TabIndex = 2;
+            this.tbxName.Text = "Eg: Pikachu";
             // 
             // frmNameInput
             // 
