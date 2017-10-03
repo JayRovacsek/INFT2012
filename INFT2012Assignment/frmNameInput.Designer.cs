@@ -58,6 +58,7 @@
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(189, 20);
             this.tbxName.TabIndex = 2;
+            this.tbxName.Text = "Bob";
             // 
             // frmNameInput
             // 

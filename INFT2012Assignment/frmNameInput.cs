@@ -24,6 +24,10 @@ namespace INFT2012Assignment
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            if(tbxName.Text.Equals(null))
+            {
+
+            }
             nameQuery = tbxName.Text;
             this.Dispose();
         }
@@ -40,6 +44,11 @@ namespace INFT2012Assignment
             {
                 playerName = value;
             }
+        }
+
+        private void errorHandle(int iErrorCode)
+        {
+
         }
     }
 }

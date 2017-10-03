@@ -41,9 +41,10 @@ namespace INFT2012Assignment
 
         }
 
-        public void dicksLol(string bagOfDicks)
+        public void labelsToNames(string playerOneName, string playerTwoName)
         {
-            MessageBox.Show("It works", ":)");
+            btnPlayerOneFirst.Text = playerOneName;
+            btnPlayerTwoFirst.Text = playerTwoName;
             return;
         }
 

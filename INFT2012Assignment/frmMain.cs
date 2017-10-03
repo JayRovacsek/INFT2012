@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//RENAME ALL VARS TO; eg; iInterger or sString etc etc 
+
 namespace INFT2012Assignment
 {
     public partial class frmMain : Form
@@ -21,22 +23,20 @@ namespace INFT2012Assignment
         {
             frmWelcome WelcomeForm = new frmWelcome();
             WelcomeForm.ShowDialog();
-            int numberOfPlayers = WelcomeForm.playerQuery;
-            setupGame(numberOfPlayers);
-            createLabels(numberOfPlayers);
-            determineTurnOrder(numberOfPlayers);
-
+            int iNumberOfPlayers = WelcomeForm.playerQuery;
+            setupGame(iNumberOfPlayers);
         }
 
-        private void setupGame(int playerCount)
+
+        private void setupGame(int iPlayerCount)
         {
             frmScoreSet SetScoreForm = new frmScoreSet();
             SetScoreForm.ShowDialog();
             int scoreTarget = SetScoreForm.queryScoreTarget;
             lbxScoreTarget.Items.Add(scoreTarget);
 
-            dataCheck(playerCount);
-            if (playerCount == 1)
+            dataCheck(iPlayerCount);
+            if (iPlayerCount == 1)
             {
                 frmNameInput NameInput = new frmNameInput();
                 NameInput.ShowDialog();
@@ -47,7 +47,7 @@ namespace INFT2012Assignment
             }
             else
             {
-                for (int i = 0; i < playerCount; i++)
+                for (int i = 0; i < iPlayerCount; i++)
                 {
                     frmNameInput NameInput = new frmNameInput();
                     NameInput.ShowDialog();
@@ -56,6 +56,8 @@ namespace INFT2012Assignment
                     lbxPlayerList.Items.Add(nameOfPlayer);
                 }
             }
+            createLabels(iPlayerCount);
+            determineTurnOrder(iPlayerCount);
         }
 
         private void createLabels(int playerCount)
@@ -72,18 +74,18 @@ namespace INFT2012Assignment
 
         private void determineTurnOrder(int playerCount)
         {
-            string dick = "";
             frmTurnOrderPicker TurnPicker = new frmTurnOrderPicker();
-            foreach (var item in lbxPlayerList.Items)
-            {
-                dick += Convert.ToString(item) + ";";
-            }
-            lblPlayerList.Text = dick;
-                //STUB
-            
-            TurnPicker.dicksLol(dick);
+
+            string playerOneName = Convert.ToString(lbxPlayerList.Items[0]);
+            string playerTwoName = Convert.ToString(lbxPlayerList.Items[1]);
+
+            TurnPicker.labelsToNames(playerOneName, playerTwoName);
+            TurnPicker.ShowDialog();
+
             //throw new NotImplementedException();
         }
+
+        // Functions to check data with overload style enabled.
 
         private void dataCheck(int data)
         {
