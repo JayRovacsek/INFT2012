@@ -38,7 +38,7 @@ namespace INFT2012Assignment
 
         private void rbnSingle_CheckedChanged(object sender, EventArgs e)   //Check changes, which updates player number
         {
-            playerQuery = rbnTwo.Checked ? 1 : 2;
+            playerQuery = rbnSingle.Checked ? 1 : 2;
         }
 
         private void rbnTwo_CheckedChanged(object sender, EventArgs e)

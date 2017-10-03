@@ -42,6 +42,7 @@
             this.btnFourDie = new System.Windows.Forms.Button();
             this.btnThreeDie = new System.Windows.Forms.Button();
             this.btnFiveDie = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lbxPlayerList
@@ -171,11 +172,20 @@
             this.btnFiveDie.UseVisualStyleBackColor = true;
             this.btnFiveDie.Click += new System.EventHandler(this.btnFiveDie_Click);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(453, 199);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(93, 69);
+            this.listBox1.TabIndex = 15;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 357);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnFiveDie);
             this.Controls.Add(this.btnFourDie);
             this.Controls.Add(this.btnThreeDie);
@@ -213,6 +223,7 @@
         private System.Windows.Forms.Button btnFourDie;
         private System.Windows.Forms.Button btnThreeDie;
         private System.Windows.Forms.Button btnFiveDie;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
