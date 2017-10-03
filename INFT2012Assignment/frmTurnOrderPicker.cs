@@ -17,7 +17,12 @@ namespace INFT2012Assignment
             InitializeComponent();
         }
 
-        private string firstPlayer = "P1";
+        private void turnOrderPicker_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private string firstPlayer;
 
         public string turnQuery
         {
@@ -33,11 +38,31 @@ namespace INFT2012Assignment
 
         private void btnPlayerOneFirst_Click(object sender, EventArgs e)
         {
-            firstPlayer = "P1";
+            firstPlayer = btnPlayerOneFirst.Text;
+            this.Dispose();
         }
 
-        private void turnOrderPicker_Load(object sender, EventArgs e)
+        private void btnPlayerTwoFirst_Click(object sender, EventArgs e)
         {
+            firstPlayer = btnPlayerTwoFirst.Text;
+            this.Dispose();
+        }
+
+        private void btnRandomOrder_Click(object sender, EventArgs e)
+        {
+            Random rRand = new Random();
+            int iRand = rRand.Next(1, 3);
+
+            switch (iRand)
+            {
+                case 1:
+                    firstPlayer = btnPlayerOneFirst.Text;
+                    break;
+                case 2:
+                    firstPlayer = btnPlayerTwoFirst.Text;
+                    break;
+            }
+            this.Dispose();
 
         }
 
@@ -47,6 +72,5 @@ namespace INFT2012Assignment
             btnPlayerTwoFirst.Text = playerTwoName;
             return;
         }
-
     }
 }

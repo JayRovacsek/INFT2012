@@ -62,6 +62,7 @@
             this.btnPlayerTwoFirst.TabIndex = 2;
             this.btnPlayerTwoFirst.Text = "P2F";
             this.btnPlayerTwoFirst.UseVisualStyleBackColor = true;
+            this.btnPlayerTwoFirst.Click += new System.EventHandler(this.btnPlayerTwoFirst_Click);
             // 
             // btnRandomOrder
             // 
@@ -71,8 +72,9 @@
             this.btnRandomOrder.TabIndex = 3;
             this.btnRandomOrder.Text = "RANDOM";
             this.btnRandomOrder.UseVisualStyleBackColor = true;
+            this.btnRandomOrder.Click += new System.EventHandler(this.btnRandomOrder_Click);
             // 
-            // turnOrderPicker
+            // frmTurnOrderPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,7 +83,7 @@
             this.Controls.Add(this.btnPlayerTwoFirst);
             this.Controls.Add(this.btnPlayerOneFirst);
             this.Controls.Add(this.lblInformation);
-            this.Name = "turnOrderPicker";
+            this.Name = "frmTurnOrderPicker";
             this.Text = "Turn Order:";
             this.Load += new System.EventHandler(this.turnOrderPicker_Load);
             this.ResumeLayout(false);

@@ -24,7 +24,9 @@ namespace INFT2012Assignment
             frmWelcome WelcomeForm = new frmWelcome();
             WelcomeForm.ShowDialog();
             int iNumberOfPlayers = WelcomeForm.playerQuery;
+            lbxNumberOfPlayers.Items.Add(iNumberOfPlayers);
             setupGame(iNumberOfPlayers);
+            Turn playerTurn = new Turn();
         }
 
 
@@ -45,9 +47,9 @@ namespace INFT2012Assignment
                 lbxPlayerList.Items.Add(nameOfPlayer);
                 lbxPlayerList.Items.Add("Evil Robot AI");
             }
-            else
+            else if(iPlayerCount == 2)
             {
-                for (int i = 0; i < iPlayerCount; i++)
+                for(int i = 0; i < 2; i++)
                 {
                     frmNameInput NameInput = new frmNameInput();
                     NameInput.ShowDialog();
@@ -81,6 +83,21 @@ namespace INFT2012Assignment
 
             TurnPicker.labelsToNames(playerOneName, playerTwoName);
             TurnPicker.ShowDialog();
+
+            int iNumberOfPlayers = Convert.ToInt16(lbxNumberOfPlayers.Items[0]);
+
+            switch (iNumberOfPlayers)
+            {
+                case 1:
+                    MessageBox.Show("Playing one player mode", "");
+                    break;
+                case 2:
+                    MessageBox.Show("Playing two player mode", "");
+                    break;
+            }
+
+            string firstPlayer = TurnPicker.turnQuery;
+            lbxPlayersTurn.Items.Add(firstPlayer);
 
             //throw new NotImplementedException();
         }
@@ -124,6 +141,37 @@ namespace INFT2012Assignment
             {
                 Application.Exit();
             }
+        }
+
+        private void initTurn(string playerName, int iNumDieRolled)
+        {
+            Turn thisTurn = new Turn();
+            thisTurn.performTurn(playerName, iNumDieRolled);
+        }
+
+        private void btnOneDie_Click(object sender, EventArgs e)
+        {
+            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 1);
+        }
+
+        private void btnTwoDie_Click(object sender, EventArgs e)
+        {
+            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 2);
+        }
+
+        private void btnThreeDie_Click(object sender, EventArgs e)
+        {
+            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 3);
+        }
+
+        private void btnFourDie_Click(object sender, EventArgs e)
+        {
+            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 4);
+        }
+
+        private void btnFiveDie_Click(object sender, EventArgs e)
+        {
+            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 5);
         }
     }
 }
