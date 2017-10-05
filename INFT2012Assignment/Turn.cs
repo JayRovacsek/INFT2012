@@ -17,11 +17,21 @@ namespace INFT2012Assignment
 
             for (int i = 0; i < iNumDieRolled; i++)
             {
-                iDieRolls[i] = rDieRand.Next(1, 7);
+                iDieRolls[i] = rDieRand.Next(1, 7);     //KILL ME LATER
 
             }
 
-            determineScore(iDieRolls, iNumDieRolled);
+            List<int> lDieRolls = new List<int>();
+
+            //lDieRolls.Clear();            MAYBE NOT NEEDED
+
+            for (int i = 0; i < iNumDieRolled; i++)
+            {
+                lDieRolls.Add(rDieRand.Next(1, 7));
+
+            }
+
+            determineScore(iDieRolls, lDieRolls, iNumDieRolled);
         }
 
         //public Turn()
@@ -73,10 +83,12 @@ namespace INFT2012Assignment
             }
         }
 
-        private void determineScore(int[] iDieRolls, int iNumDieRolled)
+        private void determineScore(int[] iDieRolls,List<int> lDieRolls, int iNumDieRolled)
         {
             scoreQuery = 0;
             Array.Sort(iDieRolls);
+
+
 
             if (sequenceCheck(iDieRolls,iNumDieRolled))
             {
@@ -113,7 +125,7 @@ namespace INFT2012Assignment
 
             int iTotalDieRoll = totalDieRoll(iDieRolls, iNumDieRolled);
             int iModTotal = iTotalDieRoll % 2;
-       
+
             switch (iModTotal)
             {
                 case 0:
@@ -263,6 +275,17 @@ namespace INFT2012Assignment
             {
                 scoreQuery = iProposedScore;
             }
+        }
+
+        private void newSequentialCheck(List<int> lDieRolls)
+        {
+            foreach (int roll in lDieRolls)
+            {
+                
+            }
+            
+
+        
         }
     }
 }
