@@ -42,7 +42,10 @@
             this.btnFourDie = new System.Windows.Forms.Button();
             this.btnThreeDie = new System.Windows.Forms.Button();
             this.btnFiveDie = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbxScorePlayerOne = new System.Windows.Forms.ListBox();
+            this.lbxScorePlayerTwo = new System.Windows.Forms.ListBox();
+            this.lblPlayerOneScore = new System.Windows.Forms.Label();
+            this.lblPlayerTwoScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbxPlayerList
@@ -172,20 +175,49 @@
             this.btnFiveDie.UseVisualStyleBackColor = true;
             this.btnFiveDie.Click += new System.EventHandler(this.btnFiveDie_Click);
             // 
-            // listBox1
+            // lbxScorePlayerOne
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(453, 199);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(93, 69);
-            this.listBox1.TabIndex = 15;
+            this.lbxScorePlayerOne.FormattingEnabled = true;
+            this.lbxScorePlayerOne.Location = new System.Drawing.Point(342, 322);
+            this.lbxScorePlayerOne.Name = "lbxScorePlayerOne";
+            this.lbxScorePlayerOne.Size = new System.Drawing.Size(100, 17);
+            this.lbxScorePlayerOne.TabIndex = 15;
+            // 
+            // lbxScorePlayerTwo
+            // 
+            this.lbxScorePlayerTwo.FormattingEnabled = true;
+            this.lbxScorePlayerTwo.Location = new System.Drawing.Point(453, 322);
+            this.lbxScorePlayerTwo.Name = "lbxScorePlayerTwo";
+            this.lbxScorePlayerTwo.Size = new System.Drawing.Size(100, 17);
+            this.lbxScorePlayerTwo.TabIndex = 16;
+            // 
+            // lblPlayerOneScore
+            // 
+            this.lblPlayerOneScore.AutoSize = true;
+            this.lblPlayerOneScore.Location = new System.Drawing.Point(342, 302);
+            this.lblPlayerOneScore.Name = "lblPlayerOneScore";
+            this.lblPlayerOneScore.Size = new System.Drawing.Size(100, 13);
+            this.lblPlayerOneScore.TabIndex = 17;
+            this.lblPlayerOneScore.Text = "Player One\'s Score:";
+            // 
+            // lblPlayerTwoScore
+            // 
+            this.lblPlayerTwoScore.AutoSize = true;
+            this.lblPlayerTwoScore.Location = new System.Drawing.Point(450, 302);
+            this.lblPlayerTwoScore.Name = "lblPlayerTwoScore";
+            this.lblPlayerTwoScore.Size = new System.Drawing.Size(101, 13);
+            this.lblPlayerTwoScore.TabIndex = 18;
+            this.lblPlayerTwoScore.Text = "Player Two\'s Score:";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 357);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lblPlayerTwoScore);
+            this.Controls.Add(this.lblPlayerOneScore);
+            this.Controls.Add(this.lbxScorePlayerTwo);
+            this.Controls.Add(this.lbxScorePlayerOne);
             this.Controls.Add(this.btnFiveDie);
             this.Controls.Add(this.btnFourDie);
             this.Controls.Add(this.btnThreeDie);
@@ -223,7 +255,10 @@
         private System.Windows.Forms.Button btnFourDie;
         private System.Windows.Forms.Button btnThreeDie;
         private System.Windows.Forms.Button btnFiveDie;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbxScorePlayerOne;
+        private System.Windows.Forms.ListBox lbxScorePlayerTwo;
+        private System.Windows.Forms.Label lblPlayerOneScore;
+        private System.Windows.Forms.Label lblPlayerTwoScore;
     }
 }
 

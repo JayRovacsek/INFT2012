@@ -11,6 +11,8 @@ namespace INFT2012Assignment
     {
         private int[] iDieRolls = new int[5];
 
+        private List<int> lDieRolls = new List<int>();
+
         public void performTurn(string playerName, int iNumDieRolled)
         {
             Random rDieRand = new Random();
@@ -80,6 +82,14 @@ namespace INFT2012Assignment
             set
             {
                 iDieRolls = value;
+            }
+        }
+
+        public List<int> queryDieRollsList      //Setup a method to query the score of a turn
+        {
+            get
+            {
+                return lDieRolls;
             }
         }
 

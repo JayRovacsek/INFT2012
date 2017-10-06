@@ -39,3 +39,16 @@ E:\INFT2012\Assignments\INFT2012AssignmentPart2\INFT2012Assignment\obj\Debug\INF
 E:\INFT2012\Assignments\INFT2012AssignmentPart2\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.GenerateResource.Cache
 E:\INFT2012\Assignments\INFT2012AssignmentPart2\INFT2012Assignment\obj\Debug\INFT2012Assignment.exe
 E:\INFT2012\Assignments\INFT2012AssignmentPart2\INFT2012Assignment\obj\Debug\INFT2012Assignment.pdb
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.exe.config
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.exe
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\bin\Debug\INFT2012Assignment.pdb
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csprojResolveAssemblyReference.cache
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmMain.resources
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmNameInput.resources
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmScoreSet.resources
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmWelcome.resources
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.Properties.Resources.resources
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmTurnOrderPicker.resources
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.GenerateResource.Cache
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.exe
+E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.pdb

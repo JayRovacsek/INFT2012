@@ -46,6 +46,7 @@ namespace INFT2012Assignment
                 string nameOfPlayer = NameInput.nameQuery;
                 lbxPlayerList.Items.Add(nameOfPlayer);
                 lbxPlayerList.Items.Add("Evil Robot AI");
+                lblPlayerOneScore.Text = nameOfPlayer + "'s Score"
             }
             else if(iPlayerCount == 2)
             {
