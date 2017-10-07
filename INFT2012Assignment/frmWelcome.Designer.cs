@@ -99,6 +99,7 @@
             this.Controls.Add(this.lblRules);
             this.Controls.Add(this.lblInfo);
             this.Name = "frmWelcome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome to PlusMoins!";
             this.Load += new System.EventHandler(this.frmWelcome_Load);
             this.ResumeLayout(false);

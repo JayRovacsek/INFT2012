@@ -46,7 +46,7 @@
             // 
             this.tbxScoreSet.Location = new System.Drawing.Point(15, 25);
             this.tbxScoreSet.Name = "tbxScoreSet";
-            this.tbxScoreSet.Size = new System.Drawing.Size(180, 20);
+            this.tbxScoreSet.Size = new System.Drawing.Size(198, 20);
             this.tbxScoreSet.TabIndex = 1;
             this.tbxScoreSet.Text = "20";
             this.tbxScoreSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -55,7 +55,7 @@
             // 
             this.btnSubmit.Location = new System.Drawing.Point(15, 51);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(180, 23);
+            this.btnSubmit.Size = new System.Drawing.Size(198, 23);
             this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "All Set!";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -65,12 +65,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(206, 90);
+            this.ClientSize = new System.Drawing.Size(225, 84);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.tbxScoreSet);
             this.Controls.Add(this.lblInformation);
             this.Name = "frmScoreSet";
-            this.Text = "frmScoreSet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Set Target Score:";
             this.ResumeLayout(false);
             this.PerformLayout();
 

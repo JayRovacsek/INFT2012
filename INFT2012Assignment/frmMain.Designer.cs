@@ -124,6 +124,7 @@
             this.btnOptions.TabIndex = 9;
             this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
+            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
             // btnOneDie
             // 
@@ -178,23 +179,23 @@
             // lbxScorePlayerOne
             // 
             this.lbxScorePlayerOne.FormattingEnabled = true;
-            this.lbxScorePlayerOne.Location = new System.Drawing.Point(342, 322);
+            this.lbxScorePlayerOne.Location = new System.Drawing.Point(342, 205);
             this.lbxScorePlayerOne.Name = "lbxScorePlayerOne";
-            this.lbxScorePlayerOne.Size = new System.Drawing.Size(100, 17);
+            this.lbxScorePlayerOne.Size = new System.Drawing.Size(100, 134);
             this.lbxScorePlayerOne.TabIndex = 15;
             // 
             // lbxScorePlayerTwo
             // 
             this.lbxScorePlayerTwo.FormattingEnabled = true;
-            this.lbxScorePlayerTwo.Location = new System.Drawing.Point(453, 322);
+            this.lbxScorePlayerTwo.Location = new System.Drawing.Point(453, 283);
             this.lbxScorePlayerTwo.Name = "lbxScorePlayerTwo";
-            this.lbxScorePlayerTwo.Size = new System.Drawing.Size(100, 17);
+            this.lbxScorePlayerTwo.Size = new System.Drawing.Size(100, 56);
             this.lbxScorePlayerTwo.TabIndex = 16;
             // 
             // lblPlayerOneScore
             // 
             this.lblPlayerOneScore.AutoSize = true;
-            this.lblPlayerOneScore.Location = new System.Drawing.Point(342, 302);
+            this.lblPlayerOneScore.Location = new System.Drawing.Point(347, 179);
             this.lblPlayerOneScore.Name = "lblPlayerOneScore";
             this.lblPlayerOneScore.Size = new System.Drawing.Size(100, 13);
             this.lblPlayerOneScore.TabIndex = 17;
@@ -203,7 +204,7 @@
             // lblPlayerTwoScore
             // 
             this.lblPlayerTwoScore.AutoSize = true;
-            this.lblPlayerTwoScore.Location = new System.Drawing.Point(450, 302);
+            this.lblPlayerTwoScore.Location = new System.Drawing.Point(452, 233);
             this.lblPlayerTwoScore.Name = "lblPlayerTwoScore";
             this.lblPlayerTwoScore.Size = new System.Drawing.Size(101, 13);
             this.lblPlayerTwoScore.TabIndex = 18;
@@ -233,6 +234,7 @@
             this.Controls.Add(this.lblPlayerList);
             this.Controls.Add(this.lbxPlayerList);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlusMoins";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);

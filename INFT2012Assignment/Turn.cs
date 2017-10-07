@@ -13,19 +13,16 @@ namespace INFT2012Assignment
 
         private List<int> lDieRolls = new List<int>();
 
-        public void performTurn(string playerName, int iNumDieRolled)
+        public void performTurn(int iNumDieRolled)
         {
             Random rDieRand = new Random();
 
             for (int i = 0; i < iNumDieRolled; i++)
             {
                 iDieRolls[i] = rDieRand.Next(1, 7);     //KILL ME LATER
-
             }
 
             List<int> lDieRolls = new List<int>();
-
-            //lDieRolls.Clear();            MAYBE NOT NEEDED
 
             for (int i = 0; i < iNumDieRolled; i++)
             {
@@ -97,8 +94,9 @@ namespace INFT2012Assignment
         {
             scoreQuery = 0;
             Array.Sort(iDieRolls);
-
-
+            int iProposedScoreA = 0;
+            int iProposedScoreB = 0;
+            int iModDieTotal = 0;
 
             if (sequenceCheck(iDieRolls,iNumDieRolled))
             {
@@ -106,13 +104,13 @@ namespace INFT2012Assignment
                 switch (iNumberOfSequential)
                 {
                     case 3:
-                        scoreUpdate(5);
+                        iProposedScoreA = 5;
                         break;
                     case 4:
-                        scoreUpdate(15);
+                        iProposedScoreA = 15;
                         break;
                     case 5:
-                        scoreUpdate(25);
+                        iProposedScoreA = 25;
                         break;
                 }
             }
@@ -122,27 +120,27 @@ namespace INFT2012Assignment
                 switch (iNumberOfDuplicate)
                 {
                     case 3:
-                        scoreUpdate(10);
+                        iProposedScoreB = 10;
                         break;
                     case 4:
-                        scoreUpdate(20);
+                        iProposedScoreB = 20;
                         break;
                     case 5:
-                        scoreUpdate(30);
+                        iProposedScoreB = 30;
                         break;
                 }
             }
 
             int iTotalDieRoll = totalDieRoll(iDieRolls, iNumDieRolled);
-            int iModTotal = iTotalDieRoll % 2;
+            iModDieTotal = iTotalDieRoll % 2;
 
-            switch (iModTotal)
+            switch (iModDieTotal)
             {
                 case 0:
-                    MessageBox.Show(Convert.ToString(iTotalDieRoll), "Equal");
+                    iModDieTotal = 0;
                     break;
                 case 1:
-                    MessageBox.Show(Convert.ToString(iTotalDieRoll), "Odd");
+                    iModDieTotal = 1;
                     break;
             }
             string sRolls = "Rolled: ";
@@ -161,7 +159,7 @@ namespace INFT2012Assignment
             }
 
             MessageBox.Show(sRolls, "");
-            MessageBox.Show(Convert.ToString(scoreQuery));
+            scoreUpdate(iProposedScoreA, iProposedScoreB, iModDieTotal);
 
         }
 
@@ -195,6 +193,7 @@ namespace INFT2012Assignment
         private int sequenceCount(int[] iDieRolls, int iNumDieRolled)
         {
             int iCountSequential = 1;
+            int iCountSequentialMax = 1;
 
             for (int i = 0; i < iNumDieRolled - 1; i++)
             {
@@ -208,11 +207,19 @@ namespace INFT2012Assignment
                 }
                 else
                 {
+                    iCountSequentialMax = iCountSequential;
                     iCountSequential = 1;
                 }
             }
 
-            return iCountSequential;
+            if(iCountSequential < iCountSequentialMax)
+            {
+                return iCountSequentialMax;
+            }
+            else
+            {
+                return iCountSequential;
+            }
         }
 
         private bool duplicatesCheck(int[] iDieRolls, int iNumDieRolled)
@@ -242,7 +249,6 @@ namespace INFT2012Assignment
         {
             int iCountDuplicate = 1;
             int iMaxCountDuplicate = 1;
-            MessageBox.Show("Duplicate", "");
 
             for (int i = 0; i < iNumDieRolled -1; i++)
             {
@@ -278,24 +284,27 @@ namespace INFT2012Assignment
             return iTotalDie;
         }
 
-        private void scoreUpdate(int iProposedScore)
+        private void scoreUpdate(int iProposedScoreA, int iProposedScoreB, int iModRolls)
         {
-            int iCurrentScore = scoreQuery;
-            if (iProposedScore > iCurrentScore)
-            {
-                scoreQuery = iProposedScore;
-            }
-        }
+            int iScoreForRound = 0;
 
-        private void newSequentialCheck(List<int> lDieRolls)
-        {
-            foreach (int roll in lDieRolls)
+            if (iProposedScoreA > iProposedScoreB)
             {
-                
+                iScoreForRound = iProposedScoreA;
             }
-            
+            else
+            {
+                iScoreForRound = iProposedScoreB;
+            }
 
-        
+            if(iModRolls == 1)
+            {
+                scoreQuery = scoreQuery - iScoreForRound;
+            }
+            else
+            {
+                scoreQuery = iScoreForRound;
+            }
         }
     }
 }

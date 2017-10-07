@@ -26,7 +26,8 @@ namespace INFT2012Assignment
             int iNumberOfPlayers = WelcomeForm.playerQuery;
             lbxNumberOfPlayers.Items.Add(iNumberOfPlayers);
             setupGame(iNumberOfPlayers);
-            Turn playerTurn = new Turn();
+            //Turn playerTurn = new Turn();
+            forceFirstTurn();
         }
 
 
@@ -37,16 +38,15 @@ namespace INFT2012Assignment
             int scoreTarget = SetScoreForm.queryScoreTarget;
             lbxScoreTarget.Items.Add(scoreTarget);
 
-            dataCheck(iPlayerCount);
+            //dataCheck(iPlayerCount);
             if (iPlayerCount == 1)
             {
                 frmNameInput NameInput = new frmNameInput();
                 NameInput.ShowDialog();
-                dataCheck(NameInput.nameQuery);
+                //dataCheck(NameInput.nameQuery);
                 string nameOfPlayer = NameInput.nameQuery;
                 lbxPlayerList.Items.Add(nameOfPlayer);
                 lbxPlayerList.Items.Add("Evil Robot AI");
-                lblPlayerOneScore.Text = nameOfPlayer + "'s Score"
             }
             else if(iPlayerCount == 2)
             {
@@ -54,13 +54,13 @@ namespace INFT2012Assignment
                 {
                     frmNameInput NameInput = new frmNameInput();
                     NameInput.ShowDialog();
-                    dataCheck(NameInput.nameQuery);
+                    //dataCheck(NameInput.nameQuery);
                     string nameOfPlayer = NameInput.nameQuery;
                     lbxPlayerList.Items.Add(nameOfPlayer);
                 }
             }
-            createLabels(iPlayerCount);
             determineTurnOrder(iPlayerCount);
+            createLabels(iPlayerCount);
         }
 
         private void createLabels(int playerCount)
@@ -73,6 +73,8 @@ namespace INFT2012Assignment
             {
                 this.Text = "Plus Moins Two Player Mode";
             }
+            lbxScorePlayerOne.Items.Add(0);
+            lbxScorePlayerTwo.Items.Add(0);
         }
 
         private void determineTurnOrder(int playerCount)
@@ -87,92 +89,198 @@ namespace INFT2012Assignment
 
             int iNumberOfPlayers = Convert.ToInt16(lbxNumberOfPlayers.Items[0]);
 
-            switch (iNumberOfPlayers)
-            {
-                case 1:
-                    MessageBox.Show("Playing one player mode", "");
-                    break;
-                case 2:
-                    MessageBox.Show("Playing two player mode", "");
-                    break;
-            }
+            //switch (iNumberOfPlayers)
+            //{
+            //    case 1:
+            //        MessageBox.Show("Playing one player mode", "");
+            //        break;
+            //    case 2:
+            //        MessageBox.Show("Playing two player mode", "");
+            //        break;
+            //}
 
             string firstPlayer = TurnPicker.turnQuery;
             lbxPlayersTurn.Items.Add(firstPlayer);
+            sNameQueryPlayerOne = firstPlayer;
 
-            //throw new NotImplementedException();
+            if(firstPlayer == Convert.ToString(lbxPlayerList.Items[0]))
+            {
+                lblPlayerOneScore.Text = lbxPlayerList.Items[0] + "'s Score";
+                lblPlayerTwoScore.Text = lbxPlayerList.Items[1] + "'s Score";
+                sNameQueryPlayerTwo = Convert.ToString(lbxPlayerList.Items[1]);
+            }
+
+            else
+            {
+                lblPlayerOneScore.Text = lbxPlayerList.Items[1] + "'s Score";
+                sNameQueryPlayerTwo = Convert.ToString(lbxPlayerList.Items[0]);
+                lblPlayerTwoScore.Text = lbxPlayerList.Items[0] + "'s Score";
+                sNameQueryPlayerOne = Convert.ToString(lbxPlayerList.Items[1]);
+            }
         }
 
+        private void forceFirstTurn()
+        {
+            string sFirstPlayer = sNameQueryPlayerOne;
+            string sSecondPlayer = sNameQueryPlayerTwo;
+            MessageBox.Show("As described in the rules, the first turn must use all 5 die/nWe are currently performing "+ sFirstPlayer +"'s turn", "Performing First Turn");
+            initTurn(5);
+            System.Threading.Thread.Sleep(200);
+            MessageBox.Show("As described in the rules, the first turn must use all 5 die/nWe are currently performing " + sSecondPlayer + "'s turn", "Performing First Turn");
+            initTurn(5);
+        }
         // Functions to check data with overload style enabled.
 
-        private void dataCheck(int data)
-        {
-            if (data == -1)
-            {
-                Application.Exit();
-            }
-        }
-        private void dataCheck(int data, int data2)
-        {
-            if (data == -1)
-            {
-                Application.Exit();
-            }
-            if (data2 == -1)
-            {
-                Application.Exit();
-            }
-        }
+        //private void dataCheck(int data)
+        //{
+        //    if (data == -1)
+        //    {
+        //        Application.Exit();
+        //    }
+        //}
+        //private void dataCheck(int data, int data2)
+        //{
+        //    if (data == -1)
+        //    {
+        //        Application.Exit();
+        //    }
+        //    if (data2 == -1)
+        //    {
+        //        Application.Exit();
+        //    }
+        //}
 
-        private void dataCheck(string data)
-        {
-            if(data == null)
-            {
-                Application.Exit();
-            }
-        }
+        //private void dataCheck(string data)
+        //{
+        //    if(data == null)
+        //    {
+        //        Application.Exit();
+        //    }
+        //}
 
-        private void dataCheck(string data,string data2)
-        {
-            if (data == null)
-            {
-                Application.Exit();
-            }
-            if (data2 == null)
-            {
-                Application.Exit();
-            }
-        }
+        //private void dataCheck(string data,string data2)
+        //{
+        //    if (data == null)
+        //    {
+        //        Application.Exit();
+        //    }
+        //    if (data2 == null)
+        //    {
+        //        Application.Exit();
+        //    }
+        //}
 
-        private void initTurn(string playerName, int iNumDieRolled)
+        private void initTurn(int iNumDieRolled)
         {
             Turn thisTurn = new Turn();
-            thisTurn.performTurn(playerName, iNumDieRolled);
+            thisTurn.performTurn(iNumDieRolled);
+
+            if(iTurnNumber == 0)
+            {
+                int iCurrentScore = Convert.ToInt32(lbxScorePlayerOne.Items[0].ToString());
+                iCurrentScore = iCurrentScore + thisTurn.scoreQuery;
+                MessageBox.Show(Convert.ToString(thisTurn.scoreQuery), "");
+                lbxScorePlayerOne.Items.Clear();
+                lbxScorePlayerOne.Items.Add(iCurrentScore);
+            }
+            else
+            {
+                int iCurrentScore = Convert.ToInt32(lbxScorePlayerTwo.Items[0].ToString());
+                iCurrentScore = iCurrentScore + thisTurn.scoreQuery;
+                MessageBox.Show(Convert.ToString(thisTurn.scoreQuery),"");
+                lbxScorePlayerTwo.Items.Clear();
+                lbxScorePlayerTwo.Items.Add(iCurrentScore);
+            }
+            changeTurn();
         }
 
         private void btnOneDie_Click(object sender, EventArgs e)
         {
-            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 1);
+            initTurn(1);
         }
 
         private void btnTwoDie_Click(object sender, EventArgs e)
         {
-            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 2);
+            initTurn(2);
         }
 
         private void btnThreeDie_Click(object sender, EventArgs e)
         {
-            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 3);
+            initTurn(3);
         }
 
         private void btnFourDie_Click(object sender, EventArgs e)
         {
-            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 4);
+            initTurn(4);
         }
 
         private void btnFiveDie_Click(object sender, EventArgs e)
         {
-            initTurn(Convert.ToString(lbxPlayersTurn.Items[0]), 5);
+            initTurn(5);
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            frmOptions OptionsForm = new frmOptions();
+            OptionsForm.ShowDialog();
+        }
+
+        private string sPlayerOne;    //Setup a variable to hold playerCount
+        private string sPlayerTwo;    //Setup a variable to hold playerCount
+
+        public string sNameQueryPlayerOne      //Setup a method to query the playerNames
+        {
+            get
+            {
+                return sPlayerOne;
+            }
+            set
+            {
+                sPlayerOne = value;
+            }
+        }
+
+        public string sNameQueryPlayerTwo      //Setup a method to query the playerNames
+        {
+            get
+            {
+                return sPlayerTwo;
+            }
+            set
+            {
+                sPlayerTwo = value;
+            }
+        }
+
+        private int iTurnNumberPrivate = 0;
+
+        public int iTurnNumber      //Setup a method to query the playerNames
+        {
+            get
+            {
+                return iTurnNumberPrivate;
+            }
+            set
+            {
+                iTurnNumberPrivate = value;
+            }
+        }
+
+        private void changeTurn()
+        {
+            int iModTurnNumber = iTurnNumber % 2;
+            switch(iModTurnNumber){
+                case 0:
+                    iTurnNumber = 1;
+                    lbxPlayersTurn.Items.Clear();
+                    lbxPlayersTurn.Items.Add(sNameQueryPlayerTwo);
+                    break;
+                case 1:
+                    iTurnNumber = 0;
+                    lbxPlayersTurn.Items.Clear();
+                    lbxPlayersTurn.Items.Add(sNameQueryPlayerOne);
+                    break;
+            }
         }
     }
 }

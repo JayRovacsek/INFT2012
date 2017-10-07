@@ -84,6 +84,7 @@
             this.Controls.Add(this.btnPlayerOneFirst);
             this.Controls.Add(this.lblInformation);
             this.Name = "frmTurnOrderPicker";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Turn Order:";
             this.Load += new System.EventHandler(this.turnOrderPicker_Load);
             this.ResumeLayout(false);

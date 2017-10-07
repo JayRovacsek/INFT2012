@@ -70,6 +70,7 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.lblInformation);
             this.Name = "frmNameInput";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Name Input:";
             this.Load += new System.EventHandler(this.frmNameInput_Load);
             this.ResumeLayout(false);
