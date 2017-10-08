@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;                                   // Also need to use Regex to validate names.
 
 namespace INFT2012Assignment
 {
@@ -18,68 +18,69 @@ namespace INFT2012Assignment
             InitializeComponent();
         }
 
-        private void frmNameInput_Load(object sender, EventArgs e)
+        private void frmNameInput_Load(object sender, EventArgs e)      // Accidental event handler, cannot remove without errors.
         {
 
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)        // Method to handle submission of data.
         {
-            string playerName = tbxName.Text;
-            string pattern = @"^[a-zA-Z0-9]*$";
-            Regex nameRegex = new Regex(pattern, 0);
+            string sPlayerNameCandidate = tbxName.Text;                 // Grab input to a variable.
+            string sRegexPattern = @"^[a-zA-Z0-9]*$";                   // Setup a pattern for regex later.
+            Regex nameRegex = new Regex(sRegexPattern, 0);              // Init regex.
 
-            switch (playerName)
+            switch (sPlayerNameCandidate)                               // Switch based on input.
             {
-                case "Eg: Alakazam":
-                    errorHandle(1);
+                case "Eg: Alakazam":                                    // Default input, no good.
+                    errorHandle(1);                                     // Handle with message.
                     break;
 
                 case "":
-                    errorHandle(2);
+                    errorHandle(2);                                     // Blank/No input, no good, handle with message.
                     break;
 
                 default:
-                    if (nameRegex.IsMatch(playerName))
+                    if (nameRegex.IsMatch(sPlayerNameCandidate))        // Passing the other two fails, check against regex.
                     {
-                        nameQuery = tbxName.Text;
-                        this.Dispose();
-                        break;
+                        NameQuery = tbxName.Text;                       // If passed, set the public to be pulled from frmMain later.
+                        this.Dispose();                                 // Kill form.
+                        break;                                          // If the form is killed, is this even needed? :D
                     }
                     else
                     {
-                        errorHandle(3);
+                        errorHandle(3);                                 // Failing regex check suggest we have a char or undesirable input.
                         break;
                     }
             }
         }
 
-        private string playerName;    //Setup a variable to hold playerCount
+        private string sPlayerName;         //Setup a variable to hold player name.
 
-        public string nameQuery      //Setup a method to query the playerNames
+        public string NameQuery             //Setup a method to query the playerNames.
         {
             get
             {
-                return playerName;
+                return sPlayerName;         
             }
             set
             {
-                playerName = value;
+                sPlayerName = value;
             }
         }
 
-        private void errorHandle(int iErrorCode)
+        private void errorHandle(int iErrorCode)        // Method to handle invalid entries, and associated messages   
         {
+            string sErrorSuggestValid = "\nValid entries include only chars a - z, A - Z and 0 - 9";
             switch (iErrorCode)
             {
                 case 1:         // Default
-                    MessageBox.Show("We love Pokemon too, but please enter a valid name", "Name input invalid");
+                    MessageBox.Show("We love Pokemon too, but please enter a valid name"+ sErrorSuggestValid, "Name input invalid");
                     break;
                 case 2:         // Blank
-                    MessageBox.Show("Please enter a name", "Name input invalid");
+                    MessageBox.Show("Please enter a name"+sErrorSuggestValid, "Name input invalid");
                     break;
                 case 3:         // Invalid Chars
-                    MessageBox.Show("We love interesting chars, ", "Name input invalid");
+                    MessageBox.Show("We love interesting chars, but please enter a valid name"+ sErrorSuggestValid, "Name input invalid");
                     break;
             }
         }

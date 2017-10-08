@@ -16,205 +16,150 @@ namespace INFT2012Assignment
     {
         public frmMain()
         {
-            InitializeComponent();
+            InitializeComponent();                                      // Required init of form.
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)           // Some stuff we want to do on the load of the form.
         {
-            frmWelcome WelcomeForm = new frmWelcome();
+            frmWelcome WelcomeForm = new frmWelcome();                  // Show the welcome screen and a set of the rules initially.
             WelcomeForm.ShowDialog();
-            int iNumberOfPlayers = WelcomeForm.playerQuery;
-            lbxNumberOfPlayers.Items.Add(iNumberOfPlayers);
-            setupGame(iNumberOfPlayers);
+            int iNumberOfPlayers = WelcomeForm.playerQuery;             // Determine playercount by welcome screen, force user to set.
+            lbxNumberOfPlayers.Items.Add(iNumberOfPlayers);             // Modify a number of labels based on player count.
+            setupGame(iNumberOfPlayers);                                // Setup game in a single function which allows our form_load to look a little cleaner.
             //Turn playerTurn = new Turn();
-            forceFirstTurn();
+            forceFirstTurn();                                           // Force the first turn to occur, as per the rules.
         }
 
 
-        private void setupGame(int iPlayerCount)
+        private void setupGame(int iPlayerCount)                        // Main method for game setup.
         {
-            frmScoreSet SetScoreForm = new frmScoreSet();
-            SetScoreForm.ShowDialog();
-            int scoreTarget = SetScoreForm.queryScoreTarget;
-            lbxScoreTarget.Items.Add(scoreTarget);
+            frmScoreSet SetScoreForm = new frmScoreSet();               // Determine target score, used later to check if the game is over.
+            SetScoreForm.ShowDialog();                                  
+            int scoreTarget = SetScoreForm.queryScoreTarget;            // Hold the variable entered into an easy to use holder for later.
+            lbxScoreTarget.Items.Add(scoreTarget);                      
 
-            //dataCheck(iPlayerCount);
-            if (iPlayerCount == 1)
+            if (iPlayerCount == 1)                                      // Setup method if we have only one human player
             {
-                frmNameInput NameInput = new frmNameInput();
-                NameInput.ShowDialog();
-                //dataCheck(NameInput.nameQuery);
-                string nameOfPlayer = NameInput.nameQuery;
-                lbxPlayerList.Items.Add(nameOfPlayer);
-                lbxPlayerList.Items.Add("Evil Robot AI");
+                frmNameInput NameInput = new frmNameInput();            // Form to grab some name data off the user
+                NameInput.ShowDialog();                     
+                string nameOfPlayer = NameInput.NameQuery;              // Determine player name based on input, regex in this function also should filter
+                lbxPlayerList.Items.Add(nameOfPlayer);                  // A number of undesirable chars from being included.
+                lbxPlayerList.Items.Add("Evil Robot AI");               // Add the AI name, ofcourse it's evil.
             }
-            else if(iPlayerCount == 2)
+            else if(iPlayerCount == 2)                                  // Setup method for two player use case.
             {
-                for(int i = 0; i < 2; i++)
+                for(int i = 0; i < 2; i++)                              // Loop twice.
                 {
-                    frmNameInput NameInput = new frmNameInput();
+                    frmNameInput NameInput = new frmNameInput();        // Form to grab some name data off the user.
                     NameInput.ShowDialog();
-                    //dataCheck(NameInput.nameQuery);
-                    string nameOfPlayer = NameInput.nameQuery;
-                    lbxPlayerList.Items.Add(nameOfPlayer);
+                    string nameOfPlayer = NameInput.NameQuery;          // Determine player name based on input, regex in this function also should filter
+                    lbxPlayerList.Items.Add(nameOfPlayer);              // A number of undesirable chars from being included.
                 }
             }
-            determineTurnOrder(iPlayerCount);
-            createLabels(iPlayerCount);
+            determineTurnOrder(iPlayerCount);                           // Once setup of player names is done, we need to determine turn order.
+            createLabels(iPlayerCount);                                 // Create labels based on number of players.
         }
 
         private void createLabels(int playerCount)
         {
-            if (playerCount == 1)
+            if (playerCount == 1)                                                               // Code branch for single player mode.
             {
-                this.Text = "Plus Moins Single Player Mode, now with 100% more Evil Robot AI";
+                this.Text = "Plus Moins Single Player Mode, now with 100% more Evil Robot AI";  // Modify main form label, add the Evil AI's presence to 100% more.
             }
-            else if (playerCount == 2)
+            else if (playerCount == 2)                                                          // Code branch for two player mode.
             {
-                this.Text = "Plus Moins Two Player Mode";
+                this.Text = "Plus Moins Two Player Mode";                                       // Modify main form label to not include Evil AI.
             }
-            lbxScorePlayerOne.Items.Add(0);
-            lbxScorePlayerTwo.Items.Add(0);
+            lbxScorePlayerOne.Items.Add(0);                                                     // Set user scores to zero.
+            lbxScorePlayerTwo.Items.Add(0);                                                     // Set user scores to zero.
         }
 
-        private void determineTurnOrder(int playerCount)
+        private void determineTurnOrder(int playerCount)                                // Code branch for determining turn order.
         {
-            frmTurnOrderPicker TurnPicker = new frmTurnOrderPicker();
+            frmTurnOrderPicker TurnPicker = new frmTurnOrderPicker();                   // Create form to accept input from user.
 
-            string playerOneName = Convert.ToString(lbxPlayerList.Items[0]);
-            string playerTwoName = Convert.ToString(lbxPlayerList.Items[1]);
+            string playerOneName = Convert.ToString(lbxPlayerList.Items[0]);            // Take the names we have and pass them to foreign function
+            string playerTwoName = Convert.ToString(lbxPlayerList.Items[1]);            // Called TurnPicker.labelsToNames.
 
-            TurnPicker.labelsToNames(playerOneName, playerTwoName);
-            TurnPicker.ShowDialog();
+            TurnPicker.labelsToNames(playerOneName, playerTwoName);                     // Set some labels to more desirable values, then show the 
+            TurnPicker.ShowDialog();                                                    // Relevent form for the user to choose turn order.
 
-            int iNumberOfPlayers = Convert.ToInt16(lbxNumberOfPlayers.Items[0]);
-
-            //switch (iNumberOfPlayers)
-            //{
-            //    case 1:
-            //        MessageBox.Show("Playing one player mode", "");
-            //        break;
-            //    case 2:
-            //        MessageBox.Show("Playing two player mode", "");
-            //        break;
-            //}
-
-            string firstPlayer = TurnPicker.turnQuery;
-            lbxPlayersTurn.Items.Add(firstPlayer);
-            sNameQueryPlayerOne = firstPlayer;
-
-            if(firstPlayer == Convert.ToString(lbxPlayerList.Items[0]))
+            string firstPlayer = TurnPicker.turnQuery;                                  // Set the "First Player" as the one chosen by the user.
+            lbxPlayersTurn.Items.Add(firstPlayer);                                      // Add the player to the current turn.
+            sNameQueryPlayerOne = firstPlayer;                                          // Set the public string so we can access it externally from this 
+                                                                                        // Method.
+            if(firstPlayer == Convert.ToString(lbxPlayerList.Items[0]))                 // Now we check if first player is the one stored in the 0'th index in our listbox
             {
-                lblPlayerOneScore.Text = lbxPlayerList.Items[0] + "'s Score";
-                lblPlayerTwoScore.Text = lbxPlayerList.Items[1] + "'s Score";
-                sNameQueryPlayerTwo = Convert.ToString(lbxPlayerList.Items[1]);
+                lblPlayerOneScore.Text = lbxPlayerList.Items[0] + "'s Score";           // If they are we modify some labels accordingly
+                lblPlayerTwoScore.Text = lbxPlayerList.Items[1] + "'s Score";           // And setup the second player.
+                sNameQueryPlayerTwo = Convert.ToString(lbxPlayerList.Items[1]);         // And set the public string for player two's name query to be used externally.
             }
 
             else
             {
-                lblPlayerOneScore.Text = lbxPlayerList.Items[1] + "'s Score";
-                sNameQueryPlayerTwo = Convert.ToString(lbxPlayerList.Items[0]);
-                lblPlayerTwoScore.Text = lbxPlayerList.Items[0] + "'s Score";
+                lblPlayerOneScore.Text = lbxPlayerList.Items[1] + "'s Score";           // Otherwise we must have chose player in the 1st index of the listbox to be
+                sNameQueryPlayerTwo = Convert.ToString(lbxPlayerList.Items[0]);         // The first turn, so we set the labels accordingly 
+                lblPlayerTwoScore.Text = lbxPlayerList.Items[0] + "'s Score";           // We can assume player two to be in the 0'th index in our listbox
                 sNameQueryPlayerOne = Convert.ToString(lbxPlayerList.Items[1]);
             }
         }
 
-        private void forceFirstTurn()
+        private void forceFirstTurn()                                                   // Force the first turn to occur, as per the rules
         {
-            string sFirstPlayer = sNameQueryPlayerOne;
-            string sSecondPlayer = sNameQueryPlayerTwo;
-            MessageBox.Show("As described in the rules, the first turn must use all 5 die/nWe are currently performing "+ sFirstPlayer +"'s turn", "Performing First Turn");
-            initTurn(5);
-            System.Threading.Thread.Sleep(200);
-            MessageBox.Show("As described in the rules, the first turn must use all 5 die/nWe are currently performing " + sSecondPlayer + "'s turn", "Performing First Turn");
-            initTurn(5);
+            string sFirstPlayer = sNameQueryPlayerOne;                                  // Hold some data locally temporarily in order to make this a little cleaner
+            string sSecondPlayer = sNameQueryPlayerTwo;                                 // Give the end-user some info so they're not in the dark also.
+            string sPlayerInfo = "As described in the rules, the first turn must use all 5 die\nWe are currently performing ";
+            string sMessageBoxTitle = "Performing First Turn";
+            MessageBox.Show(sPlayerInfo + sFirstPlayer +"'s turn", sMessageBoxTitle);
+            initTurn(5);                                                                // Call a turn with 5 die
+            System.Threading.Thread.Sleep(800);                                         // Sleep as to let the user see what's happening instead of just throwing score at them
+            MessageBox.Show(sPlayerInfo + sSecondPlayer + "'s turn", sMessageBoxTitle);
+            initTurn(5);                                                                // Call another turn 
         }
-        // Functions to check data with overload style enabled.
 
-        //private void dataCheck(int data)
-        //{
-        //    if (data == -1)
-        //    {
-        //        Application.Exit();
-        //    }
-        //}
-        //private void dataCheck(int data, int data2)
-        //{
-        //    if (data == -1)
-        //    {
-        //        Application.Exit();
-        //    }
-        //    if (data2 == -1)
-        //    {
-        //        Application.Exit();
-        //    }
-        //}
-
-        //private void dataCheck(string data)
-        //{
-        //    if(data == null)
-        //    {
-        //        Application.Exit();
-        //    }
-        //}
-
-        //private void dataCheck(string data,string data2)
-        //{
-        //    if (data == null)
-        //    {
-        //        Application.Exit();
-        //    }
-        //    if (data2 == null)
-        //    {
-        //        Application.Exit();
-        //    }
-        //}
-
-        private void initTurn(int iNumDieRolled)
+        private void initTurn(int iNumDieRolled)                                                // Method to perform turns and handle associated data required
         {
             Turn thisTurn = new Turn();
-            thisTurn.performTurn(iNumDieRolled);
+            thisTurn.performTurn(iNumDieRolled);                                                // Create form and call it, letting it know how many die are chosen.
 
-            if(iTurnNumber == 0)
+            if(iTurnNumber == 0)                                                                // If the 1st player's turn, perform score modifications to them
             {
-                int iCurrentScore = Convert.ToInt32(lbxScorePlayerOne.Items[0].ToString());
-                iCurrentScore = iCurrentScore + thisTurn.scoreQuery;
-                MessageBox.Show(Convert.ToString(thisTurn.scoreQuery), "");
-                lbxScorePlayerOne.Items.Clear();
-                lbxScorePlayerOne.Items.Add(iCurrentScore);
+                int iCurrentScore = Convert.ToInt32(lbxScorePlayerOne.Items[0].ToString());     // Grab the current score of player
+                iCurrentScore = iCurrentScore + thisTurn.scoreQuery;                            // Add current score and updated score
+                lbxScorePlayerOne.Items.Clear();                                                // Clear current score from placeholder
+                lbxScorePlayerOne.Items.Add(iCurrentScore);                                     // Place updated score instead into placeholder
             }
             else
             {
-                int iCurrentScore = Convert.ToInt32(lbxScorePlayerTwo.Items[0].ToString());
+                int iCurrentScore = Convert.ToInt32(lbxScorePlayerTwo.Items[0].ToString());     // Otherwise update and perform functions on second player
                 iCurrentScore = iCurrentScore + thisTurn.scoreQuery;
-                MessageBox.Show(Convert.ToString(thisTurn.scoreQuery),"");
                 lbxScorePlayerTwo.Items.Clear();
                 lbxScorePlayerTwo.Items.Add(iCurrentScore);
             }
-            changeTurn();
+            changeTurn();                                                       // Change the turn number as to let the next person have a turn
         }
 
-        private void btnOneDie_Click(object sender, EventArgs e)
+        private void btnOneDie_Click(object sender, EventArgs e)                // Create a turn with 1 die - completely pointless.
         {
             initTurn(1);
         }
 
-        private void btnTwoDie_Click(object sender, EventArgs e)
+        private void btnTwoDie_Click(object sender, EventArgs e)                // Create a turn with 2 die - also completely pointless.
         {
             initTurn(2);
         }
 
-        private void btnThreeDie_Click(object sender, EventArgs e)
+        private void btnThreeDie_Click(object sender, EventArgs e)              // Create a turn with 3 die.
         {
             initTurn(3);
         }
 
-        private void btnFourDie_Click(object sender, EventArgs e)
+        private void btnFourDie_Click(object sender, EventArgs e)               // Create a turn with 4 die.
         {
             initTurn(4);
         }
 
-        private void btnFiveDie_Click(object sender, EventArgs e)
+        private void btnFiveDie_Click(object sender, EventArgs e)               // Create a turn with 1 die - completely pointless.
         {
             initTurn(5);
         }
@@ -225,60 +170,60 @@ namespace INFT2012Assignment
             OptionsForm.ShowDialog();
         }
 
-        private string sPlayerOne;    //Setup a variable to hold playerCount
-        private string sPlayerTwo;    //Setup a variable to hold playerCount
+        private string sPlayerOne;                                  // Setup a variable to hold player name
+        private string sPlayerTwo;
 
-        public string sNameQueryPlayerOne      //Setup a method to query the playerNames
+        public string sNameQueryPlayerOne                           //Setup a method to query the playerNames
         {
             get
             {
-                return sPlayerOne;
+                return sPlayerOne;                                  // Return the otherwise private name
             }
             set
             {
-                sPlayerOne = value;
+                sPlayerOne = value;                                 // Assign to the private name from a public instance
             }
         }
 
-        public string sNameQueryPlayerTwo      //Setup a method to query the playerNames
+        public string sNameQueryPlayerTwo                           //Setup a method to query the playerNames
         {
             get
             {
-                return sPlayerTwo;
+                return sPlayerTwo;                                  // Return the otherwise private name
             }
             set
             {
-                sPlayerTwo = value;
+                sPlayerTwo = value;                                 // Assign to the private name from a public instance
             }
         }
 
-        private int iTurnNumberPrivate = 0;
+        private int iTurnNumberPrivate = 0;                         // Setup a turn number counter - actually acts more like a bool however
 
-        public int iTurnNumber      //Setup a method to query the playerNames
+        public int iTurnNumber                                      //Setup a method to query the turn number
         {
             get
             {
-                return iTurnNumberPrivate;
-            }
+                return iTurnNumberPrivate;                          // Return the therwise private var
+            }   
             set
             {
-                iTurnNumberPrivate = value;
+                iTurnNumberPrivate = value;                         // Set the value of the private var
             }
         }
 
-        private void changeTurn()
+        private void changeTurn()                                   // Method to change the turn number
         {
-            int iModTurnNumber = iTurnNumber % 2;
+            int iModTurnNumber = iTurnNumber % 2;                   // Modulus operation on the int, check if player 1 or 2 is current 
             switch(iModTurnNumber){
-                case 0:
-                    iTurnNumber = 1;
-                    lbxPlayersTurn.Items.Clear();
-                    lbxPlayersTurn.Items.Add(sNameQueryPlayerTwo);
+                case 0:                                             // Case that it's player 1
+                    iTurnNumber = 1;                                // Juggle the values
+                    lbxPlayersTurn.Items.Clear();                   // Clear the old
+                    lbxPlayersTurn.Items.Add(sNameQueryPlayerTwo);  // Re-add the value to our listbox container
                     break;
-                case 1:
-                    iTurnNumber = 0;
-                    lbxPlayersTurn.Items.Clear();
-                    lbxPlayersTurn.Items.Add(sNameQueryPlayerOne);
+                case 1:                                             // Case that it's player 2
+                    iTurnNumber = 0;                                // Set new turn #
+                    lbxPlayersTurn.Items.Clear();                   // Kill the old
+                    lbxPlayersTurn.Items.Add(sNameQueryPlayerOne);  // Set the new
                     break;
             }
         }
