@@ -33,20 +33,20 @@ namespace INFT2012Assignment
 
         private void btnStart_Click(object sender, EventArgs e)     //Kill this form
         {
-            this.Dispose();
+            this.Dispose();                                     
         }
 
         private void rbnSingle_CheckedChanged(object sender, EventArgs e)   //Check changes, which updates player number
         {
-            playerQuery = rbnSingle.Checked ? 1 : 2;
+            playerQuery = rbnSingle.Checked ? 1 : 2;                        // Set player number based on the checked option
         }
 
-        private void rbnTwo_CheckedChanged(object sender, EventArgs e)
+        private void rbnTwo_CheckedChanged(object sender, EventArgs e)      // Same as above
         {
             playerQuery = rbnTwo.Checked ? 2 : 1;
         }
 
-        private void frmWelcome_Load(object sender, EventArgs e)
+        private void frmWelcome_Load(object sender, EventArgs e)            // Set player count to 1 to reflect the currently checked option
         {
             playerQuery = 1;
         }
