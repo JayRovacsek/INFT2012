@@ -52,6 +52,12 @@
     <Compile Include="frmOptions.Designer.cs">
       <DependentUpon>frmOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRerollOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRerollOptions.Designer.cs">
+      <DependentUpon>frmRerollOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Turn.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmOptions.resx">
       <DependentUpon>frmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRerollOptions.resx">
+      <DependentUpon>frmRerollOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmScoreSet.resx">
       <DependentUpon>frmScoreSet.cs</DependentUpon>

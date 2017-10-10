@@ -120,7 +120,7 @@ namespace INFT2012Assignment
         private void initTurn(int iNumDieRolled)                                                // Method to perform turns and handle associated data required
         {
             Turn thisTurn = new Turn();
-            thisTurn.performTurn(iNumDieRolled);                                                // Create form and call it, letting it know how many die are chosen.
+            thisTurn.performTurn(iNumDieRolled, Convert.ToString(lbxPlayersTurn.Items[0]));                                                // Create form and call it, letting it know how many die are chosen.
 
             if(iTurnNumber == 0)                                                                // If the 1st player's turn, perform score modifications to them
             {
@@ -139,27 +139,7 @@ namespace INFT2012Assignment
             changeTurn();                                                       // Change the turn number as to let the next person have a turn
         }
 
-        private void btnOneDie_Click(object sender, EventArgs e)                // Create a turn with 1 die - completely pointless.
-        {
-            initTurn(1);
-        }
-
-        private void btnTwoDie_Click(object sender, EventArgs e)                // Create a turn with 2 die - also completely pointless.
-        {
-            initTurn(2);
-        }
-
-        private void btnThreeDie_Click(object sender, EventArgs e)              // Create a turn with 3 die.
-        {
-            initTurn(3);
-        }
-
-        private void btnFourDie_Click(object sender, EventArgs e)               // Create a turn with 4 die.
-        {
-            initTurn(4);
-        }
-
-        private void btnFiveDie_Click(object sender, EventArgs e)               // Create a turn with 1 die - completely pointless.
+        private void btnFiveDie_Click(object sender, EventArgs e)               // User starts a turn (Cannot change even name without an error)
         {
             initTurn(5);
         }
@@ -171,6 +151,7 @@ namespace INFT2012Assignment
         }
 
         private string sPlayerOne;                                  // Setup a variable to hold player name
+
         private string sPlayerTwo;
 
         public string sNameQueryPlayerOne                           //Setup a method to query the playerNames

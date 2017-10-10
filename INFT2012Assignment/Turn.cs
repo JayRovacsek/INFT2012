@@ -9,51 +9,9 @@ namespace INFT2012Assignment
 {
     class Turn
     {
+        #region Pub Methods & related vars for data hiding.
+
         private int[] iDieRolls = new int[5];
-
-        private List<int> lDieRolls = new List<int>();
-
-        public void performTurn(int iNumDieRolled)
-        {
-            Random rDieRand = new Random();
-
-            for (int i = 0; i < iNumDieRolled; i++)
-            {
-                iDieRolls[i] = rDieRand.Next(1, 7);     //KILL ME LATER
-            }
-
-            List<int> lDieRolls = new List<int>();
-
-            for (int i = 0; i < iNumDieRolled; i++)
-            {
-                lDieRolls.Add(rDieRand.Next(1, 7));
-
-            }
-
-            determineScore(iDieRolls, lDieRolls, iNumDieRolled);
-        }
-
-        //public Turn()
-        //{
-        //    Random rDieRand = new Random();
-        //    List<int> dickRolls = new List<int>();
-
-        //    for (int i = 0; i < 5; i++)
-        //    {
-        //        dickRolls.Add(rDieRand.Next(1, 7));
-        //    }
-        //    int totalScore = 0;
-
-        //    dickRolls.TrueForAll
-        //    foreach (var item in dickRolls)
-        //    {
-
-        //        totalScore < checkSequence
-        //          totalScore += checkDuplicates
-        //            totalScore += CheckDicks()
-
-        //    }
-        //}
 
         private int scoreAmount;    //Setup a variable to hold scoreAmount
 
@@ -69,7 +27,6 @@ namespace INFT2012Assignment
             }
         }
 
-
         public int[] queryDieRolls      //Setup a method to query the score of a turn
         {
             get
@@ -82,15 +39,60 @@ namespace INFT2012Assignment
             }
         }
 
-        public List<int> queryDieRollsList      //Setup a method to query the score of a turn
+        #endregion
+
+        #region Methods for performing turn
+
+        public void performTurn(int iNumDieRolled, string sPlayerName)
         {
-            get
+            Random rDieRand = new Random();
+
+            for (int i = 0; i < iNumDieRolled; i++)
             {
-                return lDieRolls;
+                iDieRolls[i] = rDieRand.Next(1, 7);     //KILL ME LATER
             }
+
+            RerollDieByChoice(iDieRolls, sPlayerName);
+
+            determineScore(iDieRolls, iNumDieRolled);
+
+            string sRolls = "Rolled: ";
+            int iMaxDie = 5;
+
+            for (int i = iMaxDie - iNumDieRolled; i < iMaxDie; i++)
+            {
+                if (i == iMaxDie - 1)
+                {
+                    sRolls += Convert.ToString(iDieRolls[i]);
+                }
+                else
+                {
+                    sRolls += Convert.ToString(iDieRolls[i] + ", ");
+                }
+            }
+
+            MessageBox.Show(sRolls, "");
         }
 
-        private void determineScore(int[] iDieRolls,List<int> lDieRolls, int iNumDieRolled)
+        private void RerollDieByChoice(int[] iDieRolls, string sPlayerName)
+        {
+            frmRerollOptions RerollOptions = new frmRerollOptions();
+            RerollOptions.RelabelOptions(iDieRolls, sPlayerName);
+            RerollOptions.ShowDialog();
+            bool bSkipped = RerollOptions.Skipped();
+            queryDieRolls = RerollOptions.DieReroll(iDieRolls);
+            if (bSkipped)
+            {
+                frmRerollOptions RerollOptionsTwo = new frmRerollOptions();
+                RerollOptionsTwo.RelabelOptions(iDieRolls, sPlayerName);
+                RerollOptionsTwo.ShowDialog();
+                queryDieRolls = RerollOptionsTwo.DieReroll(iDieRolls);
+            }
+        }
+           
+
+
+        private void determineScore(int[] iDieRolls, int iNumDieRolled)
         {
             scoreQuery = 0;
             Array.Sort(iDieRolls);
@@ -129,6 +131,7 @@ namespace INFT2012Assignment
                         iProposedScoreB = 30;
                         break;
                 }
+
             }
 
             int iTotalDieRoll = totalDieRoll(iDieRolls, iNumDieRolled);
@@ -143,24 +146,8 @@ namespace INFT2012Assignment
                     iModDieTotal = 1;
                     break;
             }
-            string sRolls = "Rolled: ";
-            int iMaxDie = 5;
 
-            for (int i = iMaxDie - iNumDieRolled; i < iMaxDie; i++)
-            {
-                if (i == iMaxDie - 1)
-                {
-                    sRolls += Convert.ToString(iDieRolls[i]);             
-                }                                                         
-                else                                                      
-                {
-                    sRolls += Convert.ToString(iDieRolls[i] + ", ");
-                }
-            }
-
-            MessageBox.Show(sRolls, "");
             scoreUpdate(iProposedScoreA, iProposedScoreB, iModDieTotal);
-
         }
 
         private bool sequenceCheck(int[] iDieRolls, int iNumDieRolled)
@@ -224,7 +211,6 @@ namespace INFT2012Assignment
 
         private bool duplicatesCheck(int[] iDieRolls, int iNumDieRolled)
         {
-            bool duplicates = false;
             int iDuplicatesCount = 1;
 
             for (int i = 0; i < iNumDieRolled - 1; i++)                         //for (int i = 0; i < iNumDieRolled - 1; i++)
@@ -306,5 +292,7 @@ namespace INFT2012Assignment
                 scoreQuery = iScoreForRound;
             }
         }
+
+        #endregion
     }
 }

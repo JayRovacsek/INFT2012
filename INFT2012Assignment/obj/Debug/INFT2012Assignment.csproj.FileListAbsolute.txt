@@ -23,7 +23,6 @@ Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmWelcome.resou
 Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.Properties.Resources.resources
 Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmTurnOrderPicker.resources
 Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.GenerateResource.Cache
-Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.CoreCompileInputs.cache
 Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.exe
 Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.pdb
 E:\INFT2012\Assignments\INFT2012AssignmentPart2\INFT2012Assignment\bin\Debug\INFT2012Assignment.exe.config
@@ -53,3 +52,4 @@ E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment
 E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.exe
 E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.pdb
 Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmOptions.resources
+Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmRerollOptions.resources

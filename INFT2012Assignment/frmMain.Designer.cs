@@ -37,11 +37,7 @@
             this.lblNumberOfPlayers = new System.Windows.Forms.Label();
             this.lbxNumberOfPlayers = new System.Windows.Forms.ListBox();
             this.btnOptions = new System.Windows.Forms.Button();
-            this.btnOneDie = new System.Windows.Forms.Button();
-            this.btnTwoDie = new System.Windows.Forms.Button();
-            this.btnFourDie = new System.Windows.Forms.Button();
-            this.btnThreeDie = new System.Windows.Forms.Button();
-            this.btnFiveDie = new System.Windows.Forms.Button();
+            this.btnGo = new System.Windows.Forms.Button();
             this.lbxScorePlayerOne = new System.Windows.Forms.ListBox();
             this.lbxScorePlayerTwo = new System.Windows.Forms.ListBox();
             this.lblPlayerOneScore = new System.Windows.Forms.Label();
@@ -126,76 +122,36 @@
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
-            // btnOneDie
+            // btnGo
             // 
-            this.btnOneDie.Location = new System.Drawing.Point(12, 264);
-            this.btnOneDie.Name = "btnOneDie";
-            this.btnOneDie.Size = new System.Drawing.Size(70, 23);
-            this.btnOneDie.TabIndex = 10;
-            this.btnOneDie.Text = "One Dice";
-            this.btnOneDie.UseVisualStyleBackColor = true;
-            this.btnOneDie.Click += new System.EventHandler(this.btnOneDie_Click);
-            // 
-            // btnTwoDie
-            // 
-            this.btnTwoDie.Location = new System.Drawing.Point(88, 264);
-            this.btnTwoDie.Name = "btnTwoDie";
-            this.btnTwoDie.Size = new System.Drawing.Size(70, 23);
-            this.btnTwoDie.TabIndex = 11;
-            this.btnTwoDie.Text = "Two Die";
-            this.btnTwoDie.UseVisualStyleBackColor = true;
-            this.btnTwoDie.Click += new System.EventHandler(this.btnTwoDie_Click);
-            // 
-            // btnFourDie
-            // 
-            this.btnFourDie.Location = new System.Drawing.Point(88, 293);
-            this.btnFourDie.Name = "btnFourDie";
-            this.btnFourDie.Size = new System.Drawing.Size(70, 23);
-            this.btnFourDie.TabIndex = 13;
-            this.btnFourDie.Text = "Four Die";
-            this.btnFourDie.UseVisualStyleBackColor = true;
-            this.btnFourDie.Click += new System.EventHandler(this.btnFourDie_Click);
-            // 
-            // btnThreeDie
-            // 
-            this.btnThreeDie.Location = new System.Drawing.Point(12, 293);
-            this.btnThreeDie.Name = "btnThreeDie";
-            this.btnThreeDie.Size = new System.Drawing.Size(70, 23);
-            this.btnThreeDie.TabIndex = 12;
-            this.btnThreeDie.Text = "Three Die";
-            this.btnThreeDie.UseVisualStyleBackColor = true;
-            this.btnThreeDie.Click += new System.EventHandler(this.btnThreeDie_Click);
-            // 
-            // btnFiveDie
-            // 
-            this.btnFiveDie.Location = new System.Drawing.Point(12, 322);
-            this.btnFiveDie.Name = "btnFiveDie";
-            this.btnFiveDie.Size = new System.Drawing.Size(146, 23);
-            this.btnFiveDie.TabIndex = 14;
-            this.btnFiveDie.Text = "Five Die";
-            this.btnFiveDie.UseVisualStyleBackColor = true;
-            this.btnFiveDie.Click += new System.EventHandler(this.btnFiveDie_Click);
+            this.btnGo.Location = new System.Drawing.Point(12, 322);
+            this.btnGo.Name = "btnGo";
+            this.btnGo.Size = new System.Drawing.Size(146, 23);
+            this.btnGo.TabIndex = 14;
+            this.btnGo.Text = "Let\'s Play!";
+            this.btnGo.UseVisualStyleBackColor = true;
+            this.btnGo.Click += new System.EventHandler(this.btnFiveDie_Click);
             // 
             // lbxScorePlayerOne
             // 
             this.lbxScorePlayerOne.FormattingEnabled = true;
-            this.lbxScorePlayerOne.Location = new System.Drawing.Point(342, 205);
+            this.lbxScorePlayerOne.Location = new System.Drawing.Point(220, 312);
             this.lbxScorePlayerOne.Name = "lbxScorePlayerOne";
-            this.lbxScorePlayerOne.Size = new System.Drawing.Size(100, 134);
+            this.lbxScorePlayerOne.Size = new System.Drawing.Size(100, 17);
             this.lbxScorePlayerOne.TabIndex = 15;
             // 
             // lbxScorePlayerTwo
             // 
             this.lbxScorePlayerTwo.FormattingEnabled = true;
-            this.lbxScorePlayerTwo.Location = new System.Drawing.Point(453, 283);
+            this.lbxScorePlayerTwo.Location = new System.Drawing.Point(400, 312);
             this.lbxScorePlayerTwo.Name = "lbxScorePlayerTwo";
-            this.lbxScorePlayerTwo.Size = new System.Drawing.Size(100, 56);
+            this.lbxScorePlayerTwo.Size = new System.Drawing.Size(91, 17);
             this.lbxScorePlayerTwo.TabIndex = 16;
             // 
             // lblPlayerOneScore
             // 
             this.lblPlayerOneScore.AutoSize = true;
-            this.lblPlayerOneScore.Location = new System.Drawing.Point(347, 179);
+            this.lblPlayerOneScore.Location = new System.Drawing.Point(225, 286);
             this.lblPlayerOneScore.Name = "lblPlayerOneScore";
             this.lblPlayerOneScore.Size = new System.Drawing.Size(100, 13);
             this.lblPlayerOneScore.TabIndex = 17;
@@ -204,7 +160,7 @@
             // lblPlayerTwoScore
             // 
             this.lblPlayerTwoScore.AutoSize = true;
-            this.lblPlayerTwoScore.Location = new System.Drawing.Point(452, 233);
+            this.lblPlayerTwoScore.Location = new System.Drawing.Point(397, 296);
             this.lblPlayerTwoScore.Name = "lblPlayerTwoScore";
             this.lblPlayerTwoScore.Size = new System.Drawing.Size(101, 13);
             this.lblPlayerTwoScore.TabIndex = 18;
@@ -219,11 +175,7 @@
             this.Controls.Add(this.lblPlayerOneScore);
             this.Controls.Add(this.lbxScorePlayerTwo);
             this.Controls.Add(this.lbxScorePlayerOne);
-            this.Controls.Add(this.btnFiveDie);
-            this.Controls.Add(this.btnFourDie);
-            this.Controls.Add(this.btnThreeDie);
-            this.Controls.Add(this.btnTwoDie);
-            this.Controls.Add(this.btnOneDie);
+            this.Controls.Add(this.btnGo);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.lbxNumberOfPlayers);
             this.Controls.Add(this.lblNumberOfPlayers);
@@ -252,11 +204,7 @@
         private System.Windows.Forms.Label lblNumberOfPlayers;
         private System.Windows.Forms.ListBox lbxNumberOfPlayers;
         private System.Windows.Forms.Button btnOptions;
-        private System.Windows.Forms.Button btnOneDie;
-        private System.Windows.Forms.Button btnTwoDie;
-        private System.Windows.Forms.Button btnFourDie;
-        private System.Windows.Forms.Button btnThreeDie;
-        private System.Windows.Forms.Button btnFiveDie;
+        private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.ListBox lbxScorePlayerOne;
         private System.Windows.Forms.ListBox lbxScorePlayerTwo;
         private System.Windows.Forms.Label lblPlayerOneScore;
