@@ -43,16 +43,18 @@ namespace INFT2012Assignment
 
         #region Methods for performing turn
 
-        public void performTurn(int iNumDieRolled, string sPlayerName)
+        public void performTurn(int iNumDieRolled, string sPlayerName, bool bAIPresent, int iScoreTarget, int iCurrentScore)
         {
+
             Random rDieRand = new Random();
 
             for (int i = 0; i < iNumDieRolled; i++)
             {
-                iDieRolls[i] = rDieRand.Next(1, 7);     //KILL ME LATER
+                iDieRolls[i] = rDieRand.Next(1, 7);
             }
 
-            RerollDieByChoice(iDieRolls, sPlayerName);
+            MessageBox.Show(Convert.ToString(iCurrentScore));
+            RerollDieByChoice(iDieRolls, sPlayerName, bAIPresent, iScoreTarget, iCurrentScore);
 
             determineScore(iDieRolls, iNumDieRolled);
 
@@ -74,19 +76,37 @@ namespace INFT2012Assignment
             MessageBox.Show(sRolls, "");
         }
 
-        private void RerollDieByChoice(int[] iDieRolls, string sPlayerName)
+        private void RerollDieByChoice(int[] iDieRolls, string sPlayerName, bool bAIPresent, int iScoreTarget, int iCurrentScore)
         {
+
             frmRerollOptions RerollOptions = new frmRerollOptions();
             RerollOptions.RelabelOptions(iDieRolls, sPlayerName);
-            RerollOptions.ShowDialog();
+            RerollOptions.AICheck(bAIPresent,sPlayerName, iScoreTarget, iDieRolls, iCurrentScore);
             bool bSkipped = RerollOptions.Skipped();
-            queryDieRolls = RerollOptions.DieReroll(iDieRolls);
-            if (bSkipped)
+            if (bAIPresent)
             {
-                frmRerollOptions RerollOptionsTwo = new frmRerollOptions();
-                RerollOptionsTwo.RelabelOptions(iDieRolls, sPlayerName);
-                RerollOptionsTwo.ShowDialog();
-                queryDieRolls = RerollOptionsTwo.DieReroll(iDieRolls);
+                bSkipped = RerollOptions.Skipped();
+                queryDieRolls = RerollOptions.DieReroll(iDieRolls);
+                if (bSkipped)
+                {
+                    frmRerollOptions RerollOptionsTwo = new frmRerollOptions();
+                    RerollOptionsTwo.RelabelOptions(iDieRolls, sPlayerName);
+                    RerollOptionsTwo.ShowDialog();
+                    queryDieRolls = RerollOptionsTwo.DieReroll(iDieRolls);
+                }
+            }
+            else
+            {
+                RerollOptions.ShowDialog();
+                bSkipped = RerollOptions.Skipped();
+                queryDieRolls = RerollOptions.DieReroll(iDieRolls);
+                if (bSkipped)
+                {
+                    frmRerollOptions RerollOptionsTwo = new frmRerollOptions();
+                    RerollOptionsTwo.RelabelOptions(iDieRolls, sPlayerName);
+                    RerollOptionsTwo.ShowDialog();
+                    queryDieRolls = RerollOptionsTwo.DieReroll(iDieRolls);
+                }
             }
         }
            

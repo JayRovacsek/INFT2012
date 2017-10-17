@@ -51,5 +51,4 @@ E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment
 E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.csproj.GenerateResource.Cache
 E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.exe
 E:\INFT2012\Assignments\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.pdb
-Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmOptions.resources
 Z:\Git\INFT2012\INFT2012Assignment\obj\Debug\INFT2012Assignment.frmRerollOptions.resources

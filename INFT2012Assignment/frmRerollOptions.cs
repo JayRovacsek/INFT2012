@@ -161,6 +161,16 @@ namespace INFT2012Assignment
             }
         }
 
+        public void AICheck(bool bAIPresent, string sPlayerName, int iScoreTarget, int[]iDieRolls, int iCurrentScore)
+        {
+            if (bAIPresent && sPlayerName == "Evil Robot AI")
+            {
+                AI AITurn = new AI();
+                bRerolledDie = AITurn.performAITurn(iDieRolls, iScoreTarget, iCurrentScore);
+
+            }
+        }
+
         public int[] DieReroll(int[] iDieRolls)
         {
             bool[] bToRollAgain = RerolledDieChoice;

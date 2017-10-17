@@ -24,10 +24,16 @@ namespace INFT2012Assignment
             frmWelcome WelcomeForm = new frmWelcome();                  // Show the welcome screen and a set of the rules initially.
             WelcomeForm.ShowDialog();
             int iNumberOfPlayers = WelcomeForm.playerQuery;             // Determine playercount by welcome screen, force user to set.
+            if(iNumberOfPlayers == 1)
+            {
+                bQueryAIPresent = true;
+            }
+            else
+            {
+                bQueryAIPresent = false;
+            }
             lbxNumberOfPlayers.Items.Add(iNumberOfPlayers);             // Modify a number of labels based on player count.
             setupGame(iNumberOfPlayers);                                // Setup game in a single function which allows our form_load to look a little cleaner.
-            //Turn playerTurn = new Turn();
-            forceFirstTurn();                                           // Force the first turn to occur, as per the rules.
         }
 
 
@@ -36,7 +42,8 @@ namespace INFT2012Assignment
             frmScoreSet SetScoreForm = new frmScoreSet();               // Determine target score, used later to check if the game is over.
             SetScoreForm.ShowDialog();                                  
             int scoreTarget = SetScoreForm.queryScoreTarget;            // Hold the variable entered into an easy to use holder for later.
-            lbxScoreTarget.Items.Add(scoreTarget);                      
+            lbxScoreTarget.Items.Add(scoreTarget);
+            iQueryTargetScore = scoreTarget;
 
             if (iPlayerCount == 1)                                      // Setup method if we have only one human player
             {
@@ -104,23 +111,12 @@ namespace INFT2012Assignment
             }
         }
 
-        private void forceFirstTurn()                                                   // Force the first turn to occur, as per the rules
-        {
-            string sFirstPlayer = sNameQueryPlayerOne;                                  // Hold some data locally temporarily in order to make this a little cleaner
-            string sSecondPlayer = sNameQueryPlayerTwo;                                 // Give the end-user some info so they're not in the dark also.
-            string sPlayerInfo = "As described in the rules, the first turn must use all 5 die\nWe are currently performing ";
-            string sMessageBoxTitle = "Performing First Turn";
-            MessageBox.Show(sPlayerInfo + sFirstPlayer +"'s turn", sMessageBoxTitle);
-            initTurn(5);                                                                // Call a turn with 5 die
-            System.Threading.Thread.Sleep(800);                                         // Sleep as to let the user see what's happening instead of just throwing score at them
-            MessageBox.Show(sPlayerInfo + sSecondPlayer + "'s turn", sMessageBoxTitle);
-            initTurn(5);                                                                // Call another turn 
-        }
-
         private void initTurn(int iNumDieRolled)                                                // Method to perform turns and handle associated data required
         {
             Turn thisTurn = new Turn();
-            thisTurn.performTurn(iNumDieRolled, Convert.ToString(lbxPlayersTurn.Items[0]));                                                // Create form and call it, letting it know how many die are chosen.
+            string sCurrentPlayer = Convert.ToString(lbxPlayersTurn.Items[0]);
+            thisTurn.performTurn(iNumDieRolled, sCurrentPlayer, bQueryAIPresent, iQueryTargetScore, iQueryCurrentScore);     
+            // Create form and call it, letting it know how many die are chosen.
 
             if(iTurnNumber == 0)                                                                // If the 1st player's turn, perform score modifications to them
             {
@@ -136,6 +132,7 @@ namespace INFT2012Assignment
                 lbxScorePlayerTwo.Items.Clear();
                 lbxScorePlayerTwo.Items.Add(iCurrentScore);
             }
+            determineEndOfGame(iCurrentScore, iScoreTarget, sCurrentPlayer);
             changeTurn();                                                       // Change the turn number as to let the next person have a turn
         }
 
@@ -144,15 +141,33 @@ namespace INFT2012Assignment
             initTurn(5);
         }
 
-        private void btnOptions_Click(object sender, EventArgs e)
+        private void determineEndOfGame(int iCurrentScore, int iScoreTarget, string sCurrentPlayer)
         {
-            frmOptions OptionsForm = new frmOptions();
-            OptionsForm.ShowDialog();
+            int iLoseScore = iScoreTarget * -1;
+
+            if(iCurrentScore < iLoseScore)
+            {
+                btnGo.Enabled = false;
+                MessageBox.Show("Game over! " + sCurrentPlayer + " loses!");
+            }
+
+            if(iCurrentScore > iScoreTarget)
+            {
+                btnGo.Enabled = false;
+                MessageBox.Show("Game over! " + sCurrentPlayer + " wins!");
+            }
+
         }
 
         private string sPlayerOne;                                  // Setup a variable to hold player name
 
         private string sPlayerTwo;
+
+        private bool bAIFlag;
+
+        private int iScoreTarget;
+
+        private int iCurrentScore;
 
         public string sNameQueryPlayerOne                           //Setup a method to query the playerNames
         {
@@ -175,6 +190,50 @@ namespace INFT2012Assignment
             set
             {
                 sPlayerTwo = value;                                 // Assign to the private name from a public instance
+            }
+        }
+
+        public bool bQueryAIPresent                         
+        {
+            get
+            {
+                return bAIFlag;                                  
+            }
+            set
+            {
+                bAIFlag = value;                                
+            }
+        }
+
+        public int iQueryTargetScore                     
+        {
+            get
+            {
+                return iScoreTarget;                                  
+            }
+            set
+            {
+                iScoreTarget = value;                                
+            }
+        }
+
+        public int iQueryCurrentScore                           //Setup a method to query the player's score on their own turn.
+        {
+            get
+            {
+                if(iTurnNumber == 0)
+                {
+                    iQueryCurrentScore = Convert.ToInt32(lbxScorePlayerOne.Items[0]);
+                }
+                else
+                {
+                    iQueryCurrentScore = Convert.ToInt32(lbxScorePlayerTwo.Items[0]);
+                }
+                return iCurrentScore;                                  // Return the relevent score.
+            }
+            set
+            {
+                iCurrentScore = value;                                 // Set the score to be queryable if needed
             }
         }
 

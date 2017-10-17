@@ -36,7 +36,6 @@
             this.lbxPlayersTurn = new System.Windows.Forms.ListBox();
             this.lblNumberOfPlayers = new System.Windows.Forms.Label();
             this.lbxNumberOfPlayers = new System.Windows.Forms.ListBox();
-            this.btnOptions = new System.Windows.Forms.Button();
             this.btnGo = new System.Windows.Forms.Button();
             this.lbxScorePlayerOne = new System.Windows.Forms.ListBox();
             this.lbxScorePlayerTwo = new System.Windows.Forms.ListBox();
@@ -112,16 +111,6 @@
             this.lbxNumberOfPlayers.Size = new System.Drawing.Size(93, 17);
             this.lbxNumberOfPlayers.TabIndex = 8;
             // 
-            // btnOptions
-            // 
-            this.btnOptions.Location = new System.Drawing.Point(453, 169);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(93, 23);
-            this.btnOptions.TabIndex = 9;
-            this.btnOptions.Text = "Options";
-            this.btnOptions.UseVisualStyleBackColor = true;
-            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
-            // 
             // btnGo
             // 
             this.btnGo.Location = new System.Drawing.Point(12, 322);
@@ -176,7 +165,6 @@
             this.Controls.Add(this.lbxScorePlayerTwo);
             this.Controls.Add(this.lbxScorePlayerOne);
             this.Controls.Add(this.btnGo);
-            this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.lbxNumberOfPlayers);
             this.Controls.Add(this.lblNumberOfPlayers);
             this.Controls.Add(this.lbxPlayersTurn);
@@ -203,7 +191,6 @@
         private System.Windows.Forms.ListBox lbxPlayersTurn;
         private System.Windows.Forms.Label lblNumberOfPlayers;
         private System.Windows.Forms.ListBox lbxNumberOfPlayers;
-        private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.ListBox lbxScorePlayerOne;
         private System.Windows.Forms.ListBox lbxScorePlayerTwo;
