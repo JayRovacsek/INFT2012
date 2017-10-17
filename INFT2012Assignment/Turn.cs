@@ -53,7 +53,6 @@ namespace INFT2012Assignment
                 iDieRolls[i] = rDieRand.Next(1, 7);
             }
 
-            MessageBox.Show(Convert.ToString(iCurrentScore));
             RerollDieByChoice(iDieRolls, sPlayerName, bAIPresent, iScoreTarget, iCurrentScore);
 
             determineScore(iDieRolls, iNumDieRolled);
@@ -74,29 +73,43 @@ namespace INFT2012Assignment
             }
 
             MessageBox.Show(sRolls, "");
+
         }
 
         private void RerollDieByChoice(int[] iDieRolls, string sPlayerName, bool bAIPresent, int iScoreTarget, int iCurrentScore)
         {
-
+            bool bSkipped = false;
             frmRerollOptions RerollOptions = new frmRerollOptions();
-            RerollOptions.RelabelOptions(iDieRolls, sPlayerName);
-            RerollOptions.AICheck(bAIPresent,sPlayerName, iScoreTarget, iDieRolls, iCurrentScore);
-            bool bSkipped = RerollOptions.Skipped();
-            if (bAIPresent)
+
+            string sRolls = "Rolled: ";
+            int iMaxDie = 5;
+
+            for (int i = 0; i < 5; i++)
             {
-                bSkipped = RerollOptions.Skipped();
-                queryDieRolls = RerollOptions.DieReroll(iDieRolls);
-                if (bSkipped)
+                if (i == 4)
                 {
-                    frmRerollOptions RerollOptionsTwo = new frmRerollOptions();
-                    RerollOptionsTwo.RelabelOptions(iDieRolls, sPlayerName);
-                    RerollOptionsTwo.ShowDialog();
-                    queryDieRolls = RerollOptionsTwo.DieReroll(iDieRolls);
+                    sRolls += Convert.ToString(iDieRolls[i]);
                 }
+                else
+                {
+                    sRolls += Convert.ToString(iDieRolls[i] + ", ");
+                }
+            }
+
+            MessageBox.Show(sRolls, "");
+
+
+            if (bAIPresent && sPlayerName == "Evil Robot AI")
+            {
+                AI AITurn = new AI();
+                bool[] bRerolledDie = AITurn.performAITurn(iDieRolls, iScoreTarget, iCurrentScore);
+                queryDieRolls = RerollOptions.DieRerollAI(iDieRolls, bRerolledDie);
+                bRerolledDie = AITurn.performAITurn(iDieRolls, iScoreTarget, iCurrentScore);
+                queryDieRolls = RerollOptions.DieRerollAI(iDieRolls, bRerolledDie);
             }
             else
             {
+                RerollOptions.RelabelOptions(iDieRolls, sPlayerName);
                 RerollOptions.ShowDialog();
                 bSkipped = RerollOptions.Skipped();
                 queryDieRolls = RerollOptions.DieReroll(iDieRolls);

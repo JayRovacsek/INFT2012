@@ -39,40 +39,77 @@ namespace INFT2012Assignment
             // of a kind = 10, 20, 30
             // Seq = 5, 15, 25
 
-            if (iScoreDifference > 30)
+            if (iDuplicateDie != 0)
             {
-                if (iSequentialDie != 0)                            // Prefer the potential average which is more suited to the current setting
+                if(iDuplicateDie > iSequentialDie)
                 {
-                    // figure the dice to reroll that aint dupes here
-                }
-                else if (iDuplicateDie != 0)
-                {
-                    // figure what dice exist in a sequence here
+                    int[] iCount = new int[6];
+                    int iMaxCount = 0;
+                    for (int i = 0; i < 6 - 1; i++)
+                    {
+                        switch (iDieRolls[i])
+                        {
+                            case 1:
+                                iCount[0]++;
+                                break;
+                            case 2:
+                                iCount[1]++;
+                                break;
+                            case 3:
+                                iCount[2]++;
+                                break;
+                            case 4:
+                                iCount[3]++;
+                                break;
+                            case 5:
+                                iCount[4]++;
+                                break;
+                            case 6:
+                                iCount[5]++;
+                                break;
+                        }  
+                    }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (iCount[i] > iCount[i + 1])          // Always will prefer a lower number - possible issue
+                        {
+                            iMaxCount = i + 1;
+                        }
+                    }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if(iDieRolls[i] != iMaxCount)
+                        {
+                            bRerolledDie[i] = true;
+                        }
+                    }
                 }
                 else
                 {
                     for (int i = 0; i < 5 - 1; i++)
+                    {
+                        if(iDieRolls[i] + 1 != iDieRolls[i + 1])
+                        {
+                            bRerolledDie[i] = true;
+                        }
+                    }
+                }
+            }
+            else if (iSequentialDie != 0)
+            {
+                for (int i = 0; i < 5 - 1; i++)
+                {
+                    if (iDieRolls[i] + 1 != iDieRolls[i + 1])
                     {
                         bRerolledDie[i] = true;
                     }
                 }
             }
-            else if(iScoreDifference > 15)
+            else
             {
-                if (iDuplicateDie != 0)
+                for (int i = 0; i < 5 - 1; i++)
                 {
-                    // figure the dice to reroll that aint dupes here
-                }
-                else if (iSequentialDie != 0)
-                {
-                    // figure what dice exist in a sequence here
-                }
-                else
-                {
-                    for (int i = 0; i < 5 - 1; i++)
-                    {
-                        bRerolledDie[i] = true;
-                    }
+                    bRerolledDie[i] = true;
                 }
             }
 

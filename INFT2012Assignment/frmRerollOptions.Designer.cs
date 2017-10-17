@@ -40,6 +40,7 @@
             this.pbxDieThree = new System.Windows.Forms.PictureBox();
             this.pbxDieFour = new System.Windows.Forms.PictureBox();
             this.pbxDieFive = new System.Windows.Forms.PictureBox();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDieOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDieTwo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDieThree)).BeginInit();
@@ -113,7 +114,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(13, 165);
+            this.btnSubmit.Location = new System.Drawing.Point(15, 194);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(400, 31);
             this.btnSubmit.TabIndex = 6;
@@ -161,11 +162,21 @@
             this.pbxDieFive.TabIndex = 11;
             this.pbxDieFive.TabStop = false;
             // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(195, 162);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(37, 13);
+            this.lblTotal.TabIndex = 12;
+            this.lblTotal.Text = "Total: ";
+            // 
             // frmRerollOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 209);
+            this.ClientSize = new System.Drawing.Size(425, 237);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.pbxDieFive);
             this.Controls.Add(this.pbxDieFour);
             this.Controls.Add(this.pbxDieThree);
@@ -204,5 +215,6 @@
         private System.Windows.Forms.PictureBox pbxDieThree;
         private System.Windows.Forms.PictureBox pbxDieFour;
         private System.Windows.Forms.PictureBox pbxDieFive;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

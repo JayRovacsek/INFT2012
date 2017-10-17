@@ -111,12 +111,11 @@ namespace INFT2012Assignment
             }
         }
 
-        private void initTurn(int iNumDieRolled)                                                // Method to perform turns and handle associated data required
+        private void initTurn()                                                // Method to perform turns and handle associated data required
         {
             Turn thisTurn = new Turn();
             string sCurrentPlayer = Convert.ToString(lbxPlayersTurn.Items[0]);
-            thisTurn.performTurn(iNumDieRolled, sCurrentPlayer, bQueryAIPresent, iQueryTargetScore, iQueryCurrentScore);     
-            // Create form and call it, letting it know how many die are chosen.
+            thisTurn.performTurn(5, sCurrentPlayer, bQueryAIPresent, iQueryTargetScore, iQueryCurrentScore);     
 
             if(iTurnNumber == 0)                                                                // If the 1st player's turn, perform score modifications to them
             {
@@ -124,6 +123,7 @@ namespace INFT2012Assignment
                 iCurrentScore = iCurrentScore + thisTurn.scoreQuery;                            // Add current score and updated score
                 lbxScorePlayerOne.Items.Clear();                                                // Clear current score from placeholder
                 lbxScorePlayerOne.Items.Add(iCurrentScore);                                     // Place updated score instead into placeholder
+                determineEndOfGame(iQueryCurrentScore, iScoreTarget, sCurrentPlayer);
             }
             else
             {
@@ -131,30 +131,39 @@ namespace INFT2012Assignment
                 iCurrentScore = iCurrentScore + thisTurn.scoreQuery;
                 lbxScorePlayerTwo.Items.Clear();
                 lbxScorePlayerTwo.Items.Add(iCurrentScore);
+                determineEndOfGame(iQueryCurrentScore, iScoreTarget, sCurrentPlayer);
             }
-            determineEndOfGame(iCurrentScore, iScoreTarget, sCurrentPlayer);
             changeTurn();                                                       // Change the turn number as to let the next person have a turn
         }
 
-        private void btnFiveDie_Click(object sender, EventArgs e)               // User starts a turn (Cannot change even name without an error)
+        private void btnGo_Click(object sender, EventArgs e)               // User starts a turn (Cannot change even name without an error)
         {
-            initTurn(5);
+            initTurn();
         }
 
         private void determineEndOfGame(int iCurrentScore, int iScoreTarget, string sCurrentPlayer)
         {
             int iLoseScore = iScoreTarget * -1;
+            MessageBox.Show(Convert.ToString(iCurrentScore));
 
-            if(iCurrentScore < iLoseScore)
+            if(iCurrentScore <= iLoseScore)
             {
                 btnGo.Enabled = false;
-                MessageBox.Show("Game over! " + sCurrentPlayer + " loses!");
+                lblGameEnder.Text = "Player who lost the game:";
+                lblGameEnder.Visible = true;
+                lbxGameEnder.Visible = true;
+                lbxGameEnder.Items.Add(sCurrentPlayer);
+                MessageBox.Show("Game over!\n" + sCurrentPlayer + " loses!","Game Over");
             }
 
-            if(iCurrentScore > iScoreTarget)
+            if(iCurrentScore >= iScoreTarget)
             {
                 btnGo.Enabled = false;
-                MessageBox.Show("Game over! " + sCurrentPlayer + " wins!");
+                lblGameEnder.Text = "Player who won the game:";
+                lblGameEnder.Visible = true;
+                lbxGameEnder.Visible = true;
+                lbxGameEnder.Items.Add(sCurrentPlayer);
+                MessageBox.Show("Game over!\n" + sCurrentPlayer + " wins!", "Game Over");
             }
 
         }
@@ -243,7 +252,7 @@ namespace INFT2012Assignment
         {
             get
             {
-                return iTurnNumberPrivate;                          // Return the therwise private var
+                return iTurnNumberPrivate;                          // Return the otherwise private var
             }   
             set
             {

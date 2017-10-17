@@ -133,6 +133,12 @@ namespace INFT2012Assignment
             cbxDieThree.Text = "Die: " + Convert.ToString(iDieRolls[2]);
             cbxDieFour.Text = "Die: " + Convert.ToString(iDieRolls[3]);
             cbxDieFive.Text = "Die: " + Convert.ToString(iDieRolls[4]);
+            int iTotal = 0;
+            for(int i = 0; i < 5; i++)
+            {
+                iTotal = iTotal + iDieRolls[i];
+            }
+            lblTotal.Text = "Total: " + Convert.ToString(iTotal);
             this.Text = "Would you like to reroll any die " + sPlayerName + "?";
         }
 
@@ -161,16 +167,6 @@ namespace INFT2012Assignment
             }
         }
 
-        public void AICheck(bool bAIPresent, string sPlayerName, int iScoreTarget, int[]iDieRolls, int iCurrentScore)
-        {
-            if (bAIPresent && sPlayerName == "Evil Robot AI")
-            {
-                AI AITurn = new AI();
-                bRerolledDie = AITurn.performAITurn(iDieRolls, iScoreTarget, iCurrentScore);
-
-            }
-        }
-
         public int[] DieReroll(int[] iDieRolls)
         {
             bool[] bToRollAgain = RerolledDieChoice;
@@ -178,6 +174,19 @@ namespace INFT2012Assignment
             for (int i = 0; i < 5; i++)
             {
                 if (bToRollAgain[i] == true)
+                {
+                    iDieRolls[i] = rDieRand.Next(1, 7);
+                }
+            }
+            return iDieRolls;
+        }
+
+        public int[] DieRerollAI(int[] iDieRolls, bool[] bDieRerollChoice)
+        {
+            Random rDieRand = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                if (bDieRerollChoice[i] == true)
                 {
                     iDieRolls[i] = rDieRand.Next(1, 7);
                 }
