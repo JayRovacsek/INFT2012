@@ -55,7 +55,7 @@ namespace INFT2012Assignment
             }
             set
             {
-                if(sSubmitLabel == "")
+                if (sSubmitLabel == "")
                 {
                     sSubmitLabel = value;
                 }
@@ -65,6 +65,8 @@ namespace INFT2012Assignment
                 }
             }
         }
+
+        #region checkboxes and image-click checking said boxes
 
         private void cbxDieOne_CheckedChanged(object sender, EventArgs e)
         {
@@ -126,15 +128,43 @@ namespace INFT2012Assignment
             }
         }
 
-        public void RelabelOptions(int[] iDieRolls,string sPlayerName)
+        private void pbxDieOne_Click(object sender, EventArgs e)
+        {
+            cbxDieOne.Checked = !cbxDieOne.Checked;
+        }
+
+        private void pbxDieTwo_Click(object sender, EventArgs e)
+        {
+            cbxDieTwo.Checked = !cbxDieTwo.Checked;
+        }
+
+        private void pbxDieThree_Click(object sender, EventArgs e)
+        {
+            cbxDieThree.Checked = !cbxDieThree.Checked;
+        }
+
+        private void pbxDieFour_Click(object sender, EventArgs e)
+        {
+            cbxDieFour.Checked = !cbxDieFour.Checked;
+        }
+
+        private void pbxDieFive_Click(object sender, EventArgs e)
+        {
+            cbxDieFive.Checked = !cbxDieFive.Checked;
+        }
+
+        #endregion
+
+        public void RelabelOptions(int[] iDieRolls, string sPlayerName)
         {
             cbxDieOne.Text = "Die: " + Convert.ToString(iDieRolls[0]);
             cbxDieTwo.Text = "Die: " + Convert.ToString(iDieRolls[1]);
             cbxDieThree.Text = "Die: " + Convert.ToString(iDieRolls[2]);
             cbxDieFour.Text = "Die: " + Convert.ToString(iDieRolls[3]);
             cbxDieFive.Text = "Die: " + Convert.ToString(iDieRolls[4]);
+            DieCheck(iDieRolls);                                                             // calls the picture box code
             int iTotal = 0;
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 iTotal = iTotal + iDieRolls[i];
             }
@@ -146,7 +176,7 @@ namespace INFT2012Assignment
         {
             for (int i = 0; i < 5; i++)
             {
-                if(RerolledDieChoice[i] == true)
+                if (RerolledDieChoice[i] == true)
                 {
                     CheckIfRerolled = true;
                     return true;
@@ -198,5 +228,126 @@ namespace INFT2012Assignment
         {
             this.Dispose();
         }
+
+        private void DieCheck(int[] iDieRolls)
+        {
+
+            switch (iDieRolls[0])
+            {
+                case 1:
+                    pbxDieOne.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieOne.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieOne.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieOne.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieOne.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieOne.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+                                                                                        //rest of the picture materialize *magically* when you expand the region
+            #region rest of the picture boxes
+
+            switch (iDieRolls[1])
+            {
+                case 1:
+                    pbxDieTwo.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieTwo.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieTwo.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieTwo.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieTwo.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieTwo.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+
+            switch (iDieRolls[2])
+            {
+                case 1:
+                    pbxDieThree.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieThree.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieThree.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieThree.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieThree.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieThree.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+
+            switch (iDieRolls[3])
+            {
+                case 1:
+                    pbxDieFour.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieFour.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieFour.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieFour.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieFour.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieFour.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+
+            switch (iDieRolls[4])
+            {
+                case 1:
+                    pbxDieFive.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieFive.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieFive.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieFive.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieFive.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieFive.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+
+            #endregion
+
+        }
+
+
     }
 }
