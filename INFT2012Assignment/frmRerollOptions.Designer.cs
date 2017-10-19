@@ -126,41 +126,51 @@
             // 
             this.pbxDieOne.Location = new System.Drawing.Point(47, 69);
             this.pbxDieOne.Name = "pbxDieOne";
-            this.pbxDieOne.Size = new System.Drawing.Size(54, 50);
+            this.pbxDieOne.Size = new System.Drawing.Size(64, 58);
+            this.pbxDieOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxDieOne.TabIndex = 7;
             this.pbxDieOne.TabStop = false;
+            this.pbxDieOne.Click += new System.EventHandler(this.pbxDieOne_Click);
             // 
             // pbxDieTwo
             // 
             this.pbxDieTwo.Location = new System.Drawing.Point(117, 69);
             this.pbxDieTwo.Name = "pbxDieTwo";
-            this.pbxDieTwo.Size = new System.Drawing.Size(54, 50);
+            this.pbxDieTwo.Size = new System.Drawing.Size(64, 58);
+            this.pbxDieTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxDieTwo.TabIndex = 8;
             this.pbxDieTwo.TabStop = false;
+            this.pbxDieTwo.Click += new System.EventHandler(this.pbxDieTwo_Click);
             // 
             // pbxDieThree
             // 
             this.pbxDieThree.Location = new System.Drawing.Point(187, 69);
             this.pbxDieThree.Name = "pbxDieThree";
-            this.pbxDieThree.Size = new System.Drawing.Size(54, 50);
+            this.pbxDieThree.Size = new System.Drawing.Size(64, 58);
+            this.pbxDieThree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxDieThree.TabIndex = 9;
             this.pbxDieThree.TabStop = false;
+            this.pbxDieThree.Click += new System.EventHandler(this.pbxDieThree_Click);
             // 
             // pbxDieFour
             // 
             this.pbxDieFour.Location = new System.Drawing.Point(257, 69);
             this.pbxDieFour.Name = "pbxDieFour";
-            this.pbxDieFour.Size = new System.Drawing.Size(54, 50);
+            this.pbxDieFour.Size = new System.Drawing.Size(64, 58);
+            this.pbxDieFour.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxDieFour.TabIndex = 10;
             this.pbxDieFour.TabStop = false;
+            this.pbxDieFour.Click += new System.EventHandler(this.pbxDieFour_Click);
             // 
             // pbxDieFive
             // 
             this.pbxDieFive.Location = new System.Drawing.Point(327, 69);
             this.pbxDieFive.Name = "pbxDieFive";
-            this.pbxDieFive.Size = new System.Drawing.Size(54, 50);
+            this.pbxDieFive.Size = new System.Drawing.Size(64, 58);
+            this.pbxDieFive.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxDieFive.TabIndex = 11;
             this.pbxDieFive.TabStop = false;
+            this.pbxDieFive.Click += new System.EventHandler(this.pbxDieFive_Click);
             // 
             // lblTotal
             // 
