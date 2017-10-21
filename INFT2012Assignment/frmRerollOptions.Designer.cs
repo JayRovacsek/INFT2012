@@ -200,6 +200,7 @@
             this.Controls.Add(this.cbxDieTwo);
             this.Controls.Add(this.cbxDieOne);
             this.Name = "frmRerollOptions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reroll any die?";
             ((System.ComponentModel.ISupportInitialize)(this.pbxDieOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDieTwo)).EndInit();

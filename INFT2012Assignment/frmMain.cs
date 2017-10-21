@@ -26,16 +26,17 @@ namespace INFT2012Assignment
             int iNumberOfPlayers = WelcomeForm.playerQuery;             // Determine playercount by welcome screen, force user to set.
             if(iNumberOfPlayers == 1)
             {
-                bQueryAIPresent = true;
+                bQueryAIPresent = true;                                 // Set AI flag if only one player present
             }
             else
             {
-                bQueryAIPresent = false;
+                bQueryAIPresent = false;                                // Otherwise no need
             }
             lbxNumberOfPlayers.Items.Add(iNumberOfPlayers);             // Modify a number of labels based on player count.
             setupGame(iNumberOfPlayers);                                // Setup game in a single function which allows our form_load to look a little cleaner.
         }
 
+#region Methods
 
         private void setupGame(int iPlayerCount)                        // Main method for game setup.
         {
@@ -123,7 +124,6 @@ namespace INFT2012Assignment
                 iCurrentScore = iCurrentScore + thisTurn.scoreQuery;                            // Add current score and updated score
                 lbxScorePlayerOne.Items.Clear();                                                // Clear current score from placeholder
                 lbxScorePlayerOne.Items.Add(iCurrentScore);                                     // Place updated score instead into placeholder
-                determineEndOfGame(iQueryCurrentScore, iScoreTarget, sCurrentPlayer);
             }
             else
             {
@@ -131,42 +131,191 @@ namespace INFT2012Assignment
                 iCurrentScore = iCurrentScore + thisTurn.scoreQuery;
                 lbxScorePlayerTwo.Items.Clear();
                 lbxScorePlayerTwo.Items.Add(iCurrentScore);
-                determineEndOfGame(iQueryCurrentScore, iScoreTarget, sCurrentPlayer);
             }
-            changeTurn();                                                       // Change the turn number as to let the next person have a turn
+            drawDie(thisTurn.queryDieRolls, Convert.ToString(this.lbxPlayersTurn.Items[0]));
+            determineEndOfGame(iQueryCurrentScore, iScoreTarget, sCurrentPlayer, thisTurn.scoreQuery);
+            changeTurn();                                                               // Change the turn number as to let the next person have a turn
         }
 
-        private void btnGo_Click(object sender, EventArgs e)               // User starts a turn (Cannot change even name without an error)
+        private void btnGo_Click(object sender, EventArgs e)                            // User starts a turn (Cannot change even name without an error)
         {
             initTurn();
         }
 
-        private void determineEndOfGame(int iCurrentScore, int iScoreTarget, string sCurrentPlayer)
-        {
-            int iLoseScore = iScoreTarget * -1;
-            MessageBox.Show(Convert.ToString(iCurrentScore));
+        #region drawDie
 
-            if(iCurrentScore <= iLoseScore)
+        private void drawDie(int[] iDieRolls, string sCurrentPlayer)
+        {
+            gbxDieRolls.Text = sCurrentPlayer + "'s Rolls:";
+            switch (iDieRolls[0])
             {
-                btnGo.Enabled = false;
-                lblGameEnder.Text = "Player who lost the game:";
-                lblGameEnder.Visible = true;
-                lbxGameEnder.Visible = true;
-                lbxGameEnder.Items.Add(sCurrentPlayer);
-                MessageBox.Show("Game over!\n" + sCurrentPlayer + " loses!","Game Over");
+                case 1:
+                    pbxDieOne.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieOne.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieOne.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieOne.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieOne.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieOne.Image = Image.FromFile("../dice/six.png");
+                    break;
             }
 
-            if(iCurrentScore >= iScoreTarget)
+            switch (iDieRolls[1])
             {
-                btnGo.Enabled = false;
-                lblGameEnder.Text = "Player who won the game:";
+                case 1:
+                    pbxDieTwo.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieTwo.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieTwo.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieTwo.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieTwo.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieTwo.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+
+            switch (iDieRolls[2])
+            {
+                case 1:
+                    pbxDieThree.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieThree.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieThree.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieThree.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieThree.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieThree.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+
+            switch (iDieRolls[3])
+            {
+                case 1:
+                    pbxDieFour.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieFour.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieFour.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieFour.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieFour.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieFour.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+
+            switch (iDieRolls[4])
+            {
+                case 1:
+                    pbxDieFive.Image = Image.FromFile("../dice/one.png");                // sets the pictureboxes to be the corresponding die faces
+                    break;                                                              // in "<project>/bin/dice/..." 
+                case 2:
+                    pbxDieFive.Image = Image.FromFile("../dice/two.png");
+                    break;
+                case 3:
+                    pbxDieFive.Image = Image.FromFile("../dice/three.png");
+                    break;
+                case 4:
+                    pbxDieFive.Image = Image.FromFile("../dice/four.png");
+                    break;
+                case 5:
+                    pbxDieFive.Image = Image.FromFile("../dice/five.png");
+                    break;
+                case 6:
+                    pbxDieFive.Image = Image.FromFile("../dice/six.png");
+                    break;
+            }
+        }
+
+        #endregion
+
+        private void determineEndOfGame(int iCurrentScore, int iScoreTarget, string sCurrentPlayer, int iScoreForRound)
+        {
+            int iLoseScore = iScoreTarget * -1;                                         // Set a lose score as outlined by the rules
+            int iScoreFromTarget = iScoreTarget - iCurrentScore;
+
+            if(iScoreFromTarget > 0)                                                    // If the score is above the target, no need to tell users how far they are away
+            {
+                MessageBox.Show("Scored: " + Convert.ToString(iScoreForRound) + "\nScore from target: " + Convert.ToString(iScoreFromTarget));
+            }
+            else
+            {
+                MessageBox.Show("Scored: " + Convert.ToString(iScoreForRound));         // Set some messages for the user(s)
+            }
+
+            if(iCurrentScore <= iLoseScore)                                                 // If the use has scored the target * -1 they lose
+            {
+                btnGo.Enabled = false;                                                      // Disable ability to go any more turns
+                lblGameEnder.Text = "Player who lost the game:";                            // Let the users know who lost
+                lblGameEnder.Visible = true;                                                // Display the loss field
+                lbxGameEnder.Visible = true;
+                lbxGameEnder.Items.Add(sCurrentPlayer);                                     // Put the player who lost in the game ender field
+                MessageBox.Show("Game over!\n" + sCurrentPlayer + " loses!","Game Over");   // How a message about the game being over
+            }
+
+            if(iCurrentScore >= iScoreTarget)                                               // If the player exceeds the target score, they have won
+            {
+                btnGo.Enabled = false;                                                      // Disable further turns
+                lblGameEnder.Text = "Player who won the game:";                             // Let the user(s) know who won
                 lblGameEnder.Visible = true;
                 lbxGameEnder.Visible = true;
                 lbxGameEnder.Items.Add(sCurrentPlayer);
-                MessageBox.Show("Game over!\n" + sCurrentPlayer + " wins!", "Game Over");
+                MessageBox.Show("Game over!\n" + sCurrentPlayer + " wins!", "Game Over");   // Message for users
             }
 
         }
+
+        private void changeTurn()                                   // Method to change the turn number
+        {
+            int iModTurnNumber = iTurnNumber % 2;                   // Modulus operation on the int, check if player 1 or 2 is current 
+            switch (iModTurnNumber)
+            {
+                case 0:                                             // Case that it's player 1
+                    iTurnNumber = 1;                                // Juggle the values
+                    lbxPlayersTurn.Items.Clear();                   // Clear the old
+                    lbxPlayersTurn.Items.Add(sNameQueryPlayerTwo);  // Re-add the value to our listbox container
+                    break;
+                case 1:                                             // Case that it's player 2
+                    iTurnNumber = 0;                                // Set new turn #
+                    lbxPlayersTurn.Items.Clear();                   // Kill the old
+                    lbxPlayersTurn.Items.Add(sNameQueryPlayerOne);  // Set the new
+                    break;
+            }
+        }
+#endregion
+
+#region Var setup and related Public Methods
 
         private string sPlayerOne;                                  // Setup a variable to hold player name
 
@@ -259,22 +408,6 @@ namespace INFT2012Assignment
                 iTurnNumberPrivate = value;                         // Set the value of the private var
             }
         }
-
-        private void changeTurn()                                   // Method to change the turn number
-        {
-            int iModTurnNumber = iTurnNumber % 2;                   // Modulus operation on the int, check if player 1 or 2 is current 
-            switch(iModTurnNumber){
-                case 0:                                             // Case that it's player 1
-                    iTurnNumber = 1;                                // Juggle the values
-                    lbxPlayersTurn.Items.Clear();                   // Clear the old
-                    lbxPlayersTurn.Items.Add(sNameQueryPlayerTwo);  // Re-add the value to our listbox container
-                    break;
-                case 1:                                             // Case that it's player 2
-                    iTurnNumber = 0;                                // Set new turn #
-                    lbxPlayersTurn.Items.Clear();                   // Kill the old
-                    lbxPlayersTurn.Items.Add(sNameQueryPlayerOne);  // Set the new
-                    break;
-            }
-        }
     }
+# endregion
 }

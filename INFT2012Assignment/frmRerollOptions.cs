@@ -17,6 +17,7 @@ namespace INFT2012Assignment
             InitializeComponent();
         }
 
+#region Pub Methods & related vars for data hiding.
         private bool[] bRerolledDie = new bool[5];
 
         public bool[] RerolledDieChoice
@@ -45,26 +46,19 @@ namespace INFT2012Assignment
             }
         }
 
-        private string sSubmitLabel = "";
-
-        public string SetSubmitLabel
+        public bool Skipped()
         {
-            get
+            if (CheckIfRerolled)
             {
-                return sSubmitLabel;
+                return false;
             }
-            set
+            else
             {
-                if (sSubmitLabel == "")
-                {
-                    sSubmitLabel = value;
-                }
-                else
-                {
-                    sSubmitLabel = sSubmitLabel + ", " + value;
-                }
+                return true;
             }
         }
+
+#endregion
 
         #region checkboxes and image-click checking said boxes
 
@@ -157,22 +151,22 @@ namespace INFT2012Assignment
 
         public void RelabelOptions(int[] iDieRolls, string sPlayerName)
         {
-            cbxDieOne.Text = "Die: " + Convert.ToString(iDieRolls[0]);
+            cbxDieOne.Text = "Die: " + Convert.ToString(iDieRolls[0]);              // Redraw a number of labels and checkboxes
             cbxDieTwo.Text = "Die: " + Convert.ToString(iDieRolls[1]);
             cbxDieThree.Text = "Die: " + Convert.ToString(iDieRolls[2]);
             cbxDieFour.Text = "Die: " + Convert.ToString(iDieRolls[3]);
             cbxDieFive.Text = "Die: " + Convert.ToString(iDieRolls[4]);
-            DieCheck(iDieRolls);                                                             // calls the picture box code
-            int iTotal = 0;
+            DieCheck(iDieRolls);                                                             
+            int iTotal = 0;                                                         // Calculate a total for the die rolls and relabel accordingly
             for (int i = 0; i < 5; i++)
             {
                 iTotal = iTotal + iDieRolls[i];
             }
             lblTotal.Text = "Total: " + Convert.ToString(iTotal);
-            this.Text = "Would you like to reroll any die " + sPlayerName + "?";
+            this.Text = "Would you like to reroll any die " + sPlayerName + "?";    // Change the form text
         }
 
-        private bool CheckRerollRequired(bool[] RerolledDieChoice)
+        private bool CheckRerollRequired(bool[] RerolledDieChoice)                  // Check if a reroll is required
         {
             for (int i = 0; i < 5; i++)
             {
@@ -185,37 +179,25 @@ namespace INFT2012Assignment
             return false;
         }
 
-        public bool Skipped()
+        public int[] DieReroll(int[] iDieRolls)                                 // Player reroll method for dice
         {
-            if (CheckIfRerolled)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        public int[] DieReroll(int[] iDieRolls)
-        {
-            bool[] bToRollAgain = RerolledDieChoice;
+            bool[] bToRollAgain = RerolledDieChoice;                            // Choice determined by player input on form
             Random rDieRand = new Random();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)                                         // Reroll the chosen dice
             {
                 if (bToRollAgain[i] == true)
                 {
-                    iDieRolls[i] = rDieRand.Next(1, 7);
+                    iDieRolls[i] = rDieRand.Next(1, 7);                         // Value between 1-6
                 }
             }
-            return iDieRolls;
+            return iDieRolls;                                                   // Return the rolls
         }
 
         public int[] DieRerollAI(int[] iDieRolls, bool[] bDieRerollChoice)
         {
-            Random rDieRand = new Random();
-            for (int i = 0; i < 5; i++)
-            {
+            Random rDieRand = new Random();                                     // AI reroll, as we need to pass the bool array
+            for (int i = 0; i < 5; i++)                                         // This could be done as an overloaded method, but is cleaner
+            {                                                                   // and easier to read if we can show the reroll is AI specific 
                 if (bDieRerollChoice[i] == true)
                 {
                     iDieRolls[i] = rDieRand.Next(1, 7);
@@ -224,7 +206,7 @@ namespace INFT2012Assignment
             return iDieRolls;
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)                // Calc and events happen via public method on the turn class.
         {
             this.Dispose();
         }
@@ -343,11 +325,7 @@ namespace INFT2012Assignment
                     pbxDieFive.Image = Image.FromFile("../dice/six.png");
                     break;
             }
-
             #endregion
-
         }
-
-
     }
 }
